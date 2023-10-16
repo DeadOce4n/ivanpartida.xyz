@@ -1,0 +1,21 @@
+---
+import RoundFill from 'icons:astro/mingcute/round-fill';
+
+export interface Props {
+  employer: string;
+  jobTitle: string;
+  period: string;
+}
+
+const { employer, jobTitle, period } = Astro.props;
+---
+
+<div class="border-l-blue flex flex-col items-start border-l-[3px]">
+  <div class="-mt-4 flex flex-row items-center gap-4">
+    <RoundFill class="text-blue -ml-[11px]" />
+    <span class="text-purple text-xl font-bold">{employer}</span>
+  </div>
+  <span class="ml-6 italic">{jobTitle}</span>
+  <span class="text-white-dark ml-6 text-sm">{period}</span>
+  <slot />
+</div>

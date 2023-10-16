@@ -1,0 +1,483 @@
+---
+import React from 'icons:astro/simple-icons/react';
+import Svelte from 'icons:astro/simple-icons/svelte';
+import TypeScript from 'icons:astro/simple-icons/typescript';
+import JavaScript from 'icons:astro/simple-icons/javascript';
+import Python from 'icons:astro/logos/python';
+import NeoVim from 'icons:astro/simple-icons/neovim';
+import Gatsby from 'icons:astro/simple-icons/gatsby';
+import Fastify from 'icons:astro/simple-icons/fastify';
+import Kubernetes from 'icons:astro/simple-icons/kubernetes';
+import Docker from 'icons:astro/simple-icons/docker';
+import NodeJs from 'icons:astro/simple-icons/nodedotjs';
+import Hetzner from 'icons:astro/simple-icons/hetzner';
+import GitLab from 'icons:astro/simple-icons/gitlab';
+import PostgreSQL from 'icons:astro/simple-icons/postgresql';
+import TailwindCSS from 'icons:astro/simple-icons/tailwindcss';
+import CloudflarePages from 'icons:astro/simple-icons/cloudflarepages';
+import MongoDB from 'icons:astro/simple-icons/mongodb';
+import Moleculer from 'icons:astro/simple-icons/moleculer';
+import Zod from 'icons:astro/simple-icons/zod';
+import AstroIcon from 'icons:astro/simple-icons/astro';
+import Git from 'icons:astro/simple-icons/git';
+import Pnpm from 'icons:astro/simple-icons/pnpm';
+import Turborepo from 'icons:astro/simple-icons/turborepo';
+import Linux from 'icons:astro/simple-icons/linux';
+import AWS from 'icons:astro/simple-icons/amazonaws';
+import Express from 'icons:astro/simple-icons/express';
+import Vite from 'icons:astro/logos/vitejs';
+import Koa from 'icons:astro/simple-icons/koa';
+import Bash from 'icons:astro/simple-icons/gnubash';
+import Electron from 'icons:astro/simple-icons/electron';
+import Eslint from 'icons:astro/logos/eslint';
+import Prettier from 'icons:astro/logos/prettier';
+import Prisma from 'icons:astro/simple-icons/prisma';
+import Mongoose from 'icons:astro/simple-icons/mongoose';
+import ChakraUI from 'icons:astro/simple-icons/chakraui';
+import Mui from 'icons:astro/simple-icons/mui';
+import GitHub from 'icons:astro/simple-icons/github';
+import Postman from 'icons:astro/simple-icons/postman';
+import ReactQuery from 'icons:astro/simple-icons/reactquery';
+import Redux from 'icons:astro/simple-icons/redux';
+import Npm from 'icons:astro/simple-icons/npm';
+import Tmux from 'icons:astro/simple-icons/tmux';
+import Download from 'icons:astro/mingcute/download-2-fill';
+import EKS from 'icons:astro/simple-icons/amazoneks';
+import K3s from 'icons:astro/simple-icons/k3s';
+import Flask from 'icons:astro/simple-icons/flask';
+import DataDog from 'icons:astro/simple-icons/datadog';
+import Nginx from 'icons:astro/simple-icons/nginx';
+import Traefik from 'icons:astro/simple-icons/traefikproxy';
+import { SEO } from 'astro-seo';
+
+import Layout from '@/layouts/Layout.astro';
+import InlineWithIcon from '@/components/InlineWithIcon.astro';
+import ProjectEntry from '@/components/ProjectEntry.astro';
+import TechBadge, {
+  type Props as TechBadgeProps,
+} from '@/components/TechBadge.astro';
+import BaseHead from '@/components/BaseHead.astro';
+import WorkExpEntry from '@/components/WorkExpEntry.astro';
+import CurrentlyEditing from '@/components/CurrentlyEditing/CurrentlyEditing.svelte';
+
+const allTechs: TechBadgeProps[] = [
+  { content: 'Linux', icon: Linux, background: 'light' },
+  { content: 'Git', icon: Git, text: 'red', background: 'light' },
+  { content: 'Bash', icon: Bash, background: 'light' },
+  { content: 'tmux', icon: Tmux, text: 'green', background: 'light' },
+  { content: 'Vite', icon: Vite, text: 'blue', background: 'light' },
+  { content: 'Express', icon: Express, background: 'light' },
+  { content: 'Koa', icon: Koa, background: 'light' },
+  { content: 'Electron', icon: Electron, text: 'blue', background: 'light' },
+  { content: 'Prisma', icon: Prisma, background: 'light' },
+  { content: 'Mongoose', icon: Mongoose, text: 'red', background: 'light' },
+  { content: 'MUI', icon: Mui, text: 'blue', background: 'light' },
+  { content: 'ChakraUI', icon: ChakraUI, text: 'green', background: 'light' },
+  { content: 'Redux', icon: Redux, text: 'purple', background: 'light' },
+  { content: 'ESLint', icon: Eslint, text: 'purple', background: 'light' },
+  { content: 'Prettier', icon: Prettier, text: 'yellow', background: 'light' },
+  { content: 'Turborepo', icon: Turborepo, text: 'blue', background: 'light' },
+  { content: 'pnpm', icon: Pnpm, text: 'yellow', background: 'light' },
+  { content: 'npm', icon: Npm, text: 'red', background: 'light' },
+  { content: 'GitHub', icon: GitHub, background: 'light' },
+  { content: 'AWS', icon: AWS, text: 'orange', background: 'light' },
+  { content: 'EKS', icon: EKS, text: 'orange', background: 'light' },
+  { content: 'k3s', icon: K3s, text: 'yellow', background: 'light' },
+  { content: 'Træfik', icon: Traefik, text: 'blue', background: 'light' },
+  { content: 'DataDog', icon: DataDog, text: 'purple', background: 'light' },
+  { content: 'Nginx', icon: Nginx, text: 'green', background: 'light' },
+  { content: 'Hetzner', icon: Hetzner, text: 'red', background: 'light' },
+  { content: 'Python', icon: Python, text: 'yellow', background: 'light' },
+  { content: 'Flask', icon: Flask, background: 'light' },
+  { content: 'Postman', icon: Postman, text: 'orange', background: 'light' },
+];
+
+const title = 'Ivan Partida | Full-Stack Engineer';
+const description =
+  'Full-Stack Engineer with a strong focus on type-safety and tooling';
+const ogImage = 'https://ivanpartida.xyz/og.webp';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead />
+    <SEO
+      title={title}
+      description="Full-Stack Engineer with a strong focus on type-safety"
+      openGraph={{
+        basic: {
+          type: 'website',
+          title,
+          url: 'https://ivanpartida.xyz',
+          image: ogImage,
+        },
+        optional: {
+          description,
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        site: '@DeadOce4n',
+        title,
+        description,
+        image: ogImage,
+        creator: '@DeadOce4n',
+      }}
+    />
+  </head>
+  <Layout>
+    <section>
+      <h1 class="not-prose mb-2">
+        <span
+          class="from-purple to-pink bg-gradient-to-r bg-clip-text text-transparent"
+        >
+          Hi, I'm Ivan Partida
+        </span>
+        <span class="animate-wiggle inline-block">👋</span>
+      </h1>
+      <span class="text-white-dark mb-4 inline-block text-sm font-bold italic">
+        Full-Stack Engineer with a focus on <span
+          class="decoration-red whitespace-nowrap underline decoration-wavy"
+          >type-safety</span
+        > and tooling
+      </span>
+      <p>
+        I love all things web-dev related: frontend development with <InlineWithIcon
+          icon={React}
+          text="React"
+          class="text-blue"
+        />
+         and <InlineWithIcon text="Svelte" icon={Svelte} class="text-orange" />,
+        backend development with <InlineWithIcon
+          text="Node.js"
+          icon={NodeJs}
+          class="text-green"
+        /> and <InlineWithIcon
+          text="Python"
+          icon={Python}
+          class="text-yellow"
+        />, and I can work comfortably in (almost) any part of the stack.
+      </p>
+      <p>
+        My favorite programming language is <InlineWithIcon
+          text="TypeScript"
+          icon={TypeScript}
+          class="text-blue"
+        />, so much that I even use it for DevOps (which I am in love with but
+        have barely scratched the surface)! Given the complexity of modern web
+        apps, I think full-stack type-safety is a must.
+      </p>
+      <p>
+        I also love the terminal, so I use a lot of CLI and TUI tools on a daily
+        basis. <InlineWithIcon text="Neovim" icon={NeoVim} class="text-green" />
+         is my favorite text editor because it allows me to code
+        <em>blazingly fast</em>.
+      </p>
+    </section>
+    <CurrentlyEditing client:load />
+    <section>
+      <h2>Work experience</h2>
+      <div class="mb-8 px-4 pt-4">
+        <WorkExpEntry
+          employer="G-Global"
+          jobTitle="Full-Stack Developer - DevOps Engineer"
+          period="May 2022 - Present"
+        >
+          <ul class="ml-4">
+            <li>
+              Contributed to the development and maintenance of the company's
+              internal software products.
+            </li>
+            <li>
+              Improved the team's overall development experience by
+              standardizing the development toolchain and mentoring other team
+              members about its correct usage.
+            </li>
+            <li>
+              Shortened the time to production for all of the company's products
+              significantly by developing a tool for massively deploying and
+              managing microservices through the <InlineWithIcon
+                text="GitLab"
+                icon={GitLab}
+                class="text-orange"
+              />
+               and <InlineWithIcon
+                text="Kubernetes"
+                icon={Kubernetes}
+                class="text-blue"
+              /> APIs.
+            </li>
+          </ul>
+        </WorkExpEntry>
+      </div>
+      <div class="not-prose w-fit">
+        <a
+          href="https://cartelera-cultural.s3.us-west-1.amazonaws.com/CV_Ivan_Partida_15-Jun-2023.pdf"
+          target="_blank"
+          class="flex-0 bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 px-4 py-2 shadow-md transition-colors"
+        >
+          <span>Download my CV</span>
+          <span><Download /></span>
+        </a>
+      </div>
+    </section>
+    <section>
+      <h2>Projects</h2>
+      <p>The following are some of my most important projects:</p>
+      <ul>
+        <ProjectEntry
+          name="SupraChat"
+          link="https://gitlab.com/suprachat"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'React',
+              icon: React,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Gatsby',
+              icon: Gatsby,
+              text: 'purple',
+              background: 'lighter',
+            },
+            {
+              content: 'TanStack Query',
+              icon: ReactQuery,
+              text: 'red',
+              background: 'lighter',
+            },
+            {
+              content: 'TailwindCSS',
+              icon: TailwindCSS,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              text: 'green',
+              background: 'lighter',
+            },
+            { content: 'Fastify', icon: Fastify, background: 'lighter' },
+            {
+              content: 'MongoDB',
+              icon: MongoDB,
+              text: 'green',
+              background: 'lighter',
+            },
+            {
+              content: 'Kubernetes',
+              icon: Kubernetes,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Docker',
+              icon: Docker,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'GitLab',
+              icon: GitLab,
+              text: 'orange',
+              background: 'lighter',
+            },
+          ]}
+        >
+          An IRC-based chat platform with user authentication and a bot for
+          managing channels.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Cartelera Cultural de Ensenada"
+          link="#"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'SvelteKit',
+              icon: Svelte,
+              text: 'orange',
+              background: 'lighter',
+            },
+            {
+              content: 'TailwindCSS',
+              icon: TailwindCSS,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              text: 'green',
+              background: 'lighter',
+            },
+            {
+              content: 'PostgreSQL',
+              icon: PostgreSQL,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Cloudflare Pages',
+              icon: CloudflarePages,
+              text: 'orange',
+              background: 'lighter',
+            },
+          ]}
+        >
+          A web platform for publishing and finding cultural events in the city
+          of Ensenada.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Zodeculer"
+          link="#"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              text: 'green',
+              background: 'lighter',
+            },
+            {
+              content: 'Moleculer',
+              icon: Moleculer,
+              text: 'blue',
+              background: 'lighter',
+            },
+            { content: 'Zod', icon: Zod, text: 'blue', background: 'lighter' },
+          ]}
+        >
+          A Moleculer microservice template with sane defaults for validations,
+          logging, and testing, offering type-safety through the whole
+          request-response cycle.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Monglue"
+          link="#"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              text: 'green',
+              background: 'lighter',
+            },
+            {
+              content: 'MongoDB',
+              icon: MongoDB,
+              text: 'green',
+              background: 'lighter',
+            },
+          ]}
+        >
+          A small wrapper around MongoDB's native Node.js driver that allows for
+          type-safe joins between collections with great auto-completion
+          support.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Portfolio"
+          link="https://gitlab.com/DeadOcean/portfolio"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Astro',
+              icon: AstroIcon,
+              text: 'orange',
+              background: 'lighter',
+            },
+            {
+              content: 'TailwindCSS',
+              icon: TailwindCSS,
+              text: 'blue',
+              background: 'lighter',
+            },
+            {
+              content: 'Cloudflare Pages',
+              icon: CloudflarePages,
+              text: 'orange',
+              background: 'lighter',
+            },
+          ]}
+        >
+          This very website!
+        </ProjectEntry>
+      </ul>
+    </section>
+    <section>
+      <h2>Tech</h2>
+      <p>
+        In addition to the technologies used in the projects shown above, I use
+        the following technologies regularly or have reasonable experience with
+        them:
+      </p>
+      <div class="flex-column flex flex-wrap gap-4 px-4">
+        {allTechs.map((props) => <TechBadge {...props} />)}
+      </div>
+      <p>
+        As you can see, I'm most comfortable working with the <InlineWithIcon
+          text="JavaScript"
+          icon={JavaScript}
+          class="text-yellow"
+        /> ecosystem; as chaotic as it is, I think that's part of the fun!
+      </p>
+    </section>
+    <section>
+      <h2>Why you should hire me</h2>
+      <ul>
+        <li>
+          I'm an easy-going person, I dislike conflicts (merge and social).
+        </li>
+        <li>I'm a strong team player, I'll help whenever I can.</li>
+        <li>
+          I have a strong focus on correctness and robustness, I like to apply
+          strict coding practices.
+        </li>
+        <li>
+          I can actually write <InlineWithIcon
+            text="TypeScript"
+            icon={TypeScript}
+            class="text-blue"
+          /> without using <code>any</code>.
+        </li>
+        <li>
+          I value <a href="https://grugbrain.dev/" target="_blank">simplicity</a
+          >, I think it leads to better software.
+        </li>
+        <li>
+          <a href="https://xkcd.com/293/" target="_blank">
+            I actually read the docs.
+          </a>
+        </li>
+        <li>Please?</li>
+      </ul>
+    </section>
+  </Layout>
+</html>

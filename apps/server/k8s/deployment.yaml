@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-ws
+  namespace: portfolio
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: portfolio-ws
+  template:
+    metadata:
+      labels:
+        app: portfolio-ws
+    spec:
+      containers:
+        - name: portfolio-ws
+          image: ttl.sh/portfolio-ws-320d88dc-f68d-45d7-b592-5db49b984e1d@sha256:6072b3f7d5d8f70ddadd6c85b04ad20903cb4dd887b52447e8ed27c5da336d48
+          ports:
+            - name: web
+              containerPort: 9001
+          envFrom:
+            - configMapRef:
+                name: portfolio-ws-env
+          volumeMounts:
+            - name: portfolio-ws-storage
+              mountPath: /home/node/app/db/
+      volumes:
+        - name: portfolio-ws-storage
+          persistentVolumeClaim:
+            claimName: portfolio-ws-storage

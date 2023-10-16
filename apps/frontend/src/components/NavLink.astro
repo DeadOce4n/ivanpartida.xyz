@@ -1,0 +1,24 @@
+---
+type Props = {
+  href: string;
+  icon: astroHTML.JSX.Element;
+  class?: string;
+};
+
+const { href, icon, class: className } = Astro.props;
+const Icon = icon;
+---
+
+<a
+  {href}
+  target="_blank"
+  class="hover:bg-gray-lighter active:bg-gray-light flex items-center justify-center gap-2 p-2 transition-colors"
+>
+  {
+    (
+      <span>
+        <Icon class={className} />
+      </span>
+    )
+  }
+</a>

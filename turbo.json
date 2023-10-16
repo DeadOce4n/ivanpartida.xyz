@@ -3,12 +3,18 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "dotEnv": [".env.production", ".env.production.local", ".env"]
     },
     "lint": {},
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env.development", ".env.development.local", ".env"],
+      "env": ["HOME"]
+    },
+    "genpasswd": {
+      "cache": false
     }
   }
 }

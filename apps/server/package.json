@@ -1,0 +1,42 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production tsx -r dotenv/config src/server.ts",
+    "dev": "NODE_ENV=development tsx watch -r dotenv/config src/server.ts",
+    "genpasswd": "tsx genpasswd.ts",
+    "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
+    "typecheck": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18",
+    "eslint-config-custom": "workspace:*",
+    "pino-pretty": "^10.2.3",
+    "tsconfig": "workspace:^",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@msgpack/msgpack": "3.0.0-beta2",
+    "argon2": "^0.31.1",
+    "dotenv": "^16.3.1",
+    "level": "^8.0.0",
+    "nanoid": "^5.0.1",
+    "nanoid-dictionary": "5.0.0-beta.1",
+    "pino": "^8.16.0",
+    "tsx": "^3.13.0",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.32.0",
+    "zod": "^3.22.4"
+  },
+  "lint-staged": {
+    "*.{ts,js,cjs,mjs}": [
+      "eslint --fix",
+      "prettier -w"
+    ]
+  }
+}

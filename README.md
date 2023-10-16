@@ -1,34 +1,13 @@
-# `Turborepo` Vite starter
+# ivanpartida.xyz - monorepo
 
-This is an official starter Turborepo.
+This is a monorepo (powered by [Turborepo](https://turbo.build/repo)) consisting of the following:
 
-## Using this example
+- Apps:
+    - `frontend`: a (mostly) static website built with [Astro](https://astro.build/), [TailwindCSS](https://tailwindcss.com/) and [Svelte](https://svelte.dev/); it uses websockets to show what I'm coding in real time.
+    - `server`: a simple WebSockets server that serves as the bridge between my text editor and the `frontend`. Built with [uWebSockets](https://github.com/uNetworking/uWebSockets.js).
+    - `plugin`: a [neovim](https://neovim.io/) plugin that sends some info about what I'm coding to the server via WebSockets. Built with [Node.js](https://nodejs.org), [neovim/node-client](https://github.com/neovim/node-client) and [esbuild](https://esbuild.github.io/).
+- Packages:
+    - `eslint-config-custom`: a custom eslint config shared by all the other packages.
+    - `tsconfig`: the base TypeScript config which all the apps inherit from.
 
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-vite
-```
-
-## What's inside?
-
-This Turborepo includes the following packages and apps:
-
-### Apps and Packages
-
-- `docs`: a vanilla [vite](https://vitejs.dev) ts app
-- `web`: another vanilla [vite](https://vitejs.dev) ts app
-- `ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `eslint-config-custom`: shared `eslint` configurations
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Jest](https://jestjs.io) test runner for all things JavaScript
-- [Prettier](https://prettier.io) for code formatting
+The whole thing uses [MessagePack](https://msgpack.org/) as the data exchange format.

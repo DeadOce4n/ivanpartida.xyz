@@ -1,0 +1,15 @@
+---
+type Props = {
+  icon: astroHTML.JSX.Element;
+  text: string;
+  class?: string;
+};
+
+const { icon, text, class: className } = Astro.props;
+const Icon = icon;
+---
+
+<strong class:list={['inline-flex items-center gap-2 text-sm', className]}>
+  <Icon />
+  {text}
+</strong>

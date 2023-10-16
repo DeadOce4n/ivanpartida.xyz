@@ -1,0 +1,46 @@
+---
+import { cva, type VariantProps } from 'class-variance-authority';
+import { twMerge } from 'tailwind-merge';
+
+const variants = cva(
+  'flex flex-row items-center gap-2 bg-gray-light px-3 py-2',
+  {
+    variants: {
+      background: {
+        normal: 'bg-transparent',
+        light: 'bg-gray-light shadow-sm',
+        lighter: 'bg-gray-lighter shadow-sm',
+      },
+      text: {
+        normal: 'text-white',
+        red: 'text-red',
+        orange: 'text-orange',
+        yellow: 'text-yellow',
+        green: 'text-green',
+        blue: 'text-blue',
+        purple: 'text-purple',
+        pink: 'text-pink',
+      },
+    },
+    defaultVariants: {
+      background: 'normal',
+      text: 'normal',
+    },
+  },
+);
+
+type Variant = VariantProps<typeof variants>;
+
+export interface Props extends Variant {
+  content: string;
+  icon: astroHTML.JSX.Element;
+}
+
+const { content, icon, background: background, text: text } = Astro.props;
+const Icon = icon;
+---
+
+<div class={twMerge(variants({ background, text }))}>
+  <span><Icon /></span>
+  <span class="text-xs font-bold">{content}</span>
+</div>

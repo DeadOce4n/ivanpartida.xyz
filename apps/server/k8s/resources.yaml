@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: portfolio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-ws
+  namespace: portfolio
+spec:
+  type: LoadBalancer
+  ipFamilyPolicy: PreferDualStack
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+  selector:
+    app: portfolio-ws
+  externalTrafficPolicy: Local
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ws
+  namespace: portfolio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.middlewares: portfolio-portfolio-ws-cors@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - ws.ivanpartida.xyz
+      secretName: portfolio-ws-cert
+  rules:
+    - host: ws.ivanpartida.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-ws
+                port:
+                  name: web
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  namespace: portfolio
+  name: portfolio-ws-cors
+spec:
+  headers:
+    accessControlAllowMethods:
+      - 'GET'
+      - 'POST'
+      - 'OPTIONS'
+      - 'PUT'
+      - 'PATCH'
+    accessControlAllowOriginList:
+      - 'https://ws.ivanpartida.xyz'
+      - 'https://ivanpartida.xyz'
+      - 'https://*.ivanpartida.xyz'
+    accessControlMaxAge: 100
+    addVaryHeader: true
+    accessControlAllowHeaders:
+      - 'Authorization'
+      - 'Content-Type'
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  namespace: portfolio
+  name: portfolio-ws-auth
+spec:
+  basicAuth:
+    secret: portfolio-ws-creds
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: portfolio-ws-creds
+type: kubernetes.io/basic-auth
+data:
+  username: aXZhbg==
+  password: OGVzd0RGdjhPUjlK
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: portfolio-ws-storage
+  namespace: portfolio
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 512Mi

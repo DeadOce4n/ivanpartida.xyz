@@ -1,0 +1,26 @@
+---
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/700.css';
+import '@fontsource/ibm-plex-mono/400-italic.css';
+import Commit from 'icons:astro/mingcute/git-commit-fill';
+
+import '@/app.css';
+import Topbar from '@/components/Topbar.astro';
+---
+
+<body class="bg-gray flex h-full flex-col">
+  <main class="flex-1">
+    <div class="mx-auto flex w-11/12 max-w-3xl flex-col gap-10 py-4">
+      <Topbar />
+      <div class="prose w-full max-w-none">
+        <slot />
+      </div>
+    </div>
+  </main>
+  <footer class="border-t-gray-light grid place-items-center border-t-2">
+    <div class="text-gray-lighter flex flex-row items-center gap-2 py-8">
+      <Commit />
+      {import.meta.env.CI_COMMIT_SHORT_SHA ?? 'development'}
+    </div>
+  </footer>
+</body>
