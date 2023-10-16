@@ -4,7 +4,8 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "NodeNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": false,
     "outDir": "dist"
   },
   "include": ["src", "build.ts"]
