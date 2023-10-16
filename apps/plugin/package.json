@@ -7,7 +7,7 @@
     "dev": "tsx build.ts --watch",
     "build": "tsx build.ts",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
-    "typecheck": "tsc"
+    "check": "tsc"
   },
   "keywords": [],
   "author": "",

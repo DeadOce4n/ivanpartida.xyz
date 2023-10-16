@@ -13,6 +13,7 @@
       "dotEnv": [".env.development", ".env.development.local", ".env"],
       "env": ["HOME"]
     },
+    "check": {},
     "genpasswd": {
       "cache": false
     }

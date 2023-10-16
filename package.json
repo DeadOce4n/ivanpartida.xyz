@@ -5,6 +5,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write --ignore-unknown \"./{apps,packages}/**/*\"",
+    "check": "turbo run check",
     "genpasswd": "turbo run genpasswd",
     "prepare": "test \"$CI\" = \"true\" || husky install"
   },
