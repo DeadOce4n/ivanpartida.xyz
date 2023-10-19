@@ -97,7 +97,7 @@ export const deploy = async (client: Client, cache: CacheVolume) => {
   const manifest = YAML.parseDocument(deploymentYaml).toJS() as V1Deployment;
 
   try {
-    await kubeClient.replace(manifest);
+    await kubeClient.patch(manifest);
   } catch (e) {
     console.log(`Deployment doesn't exist, gotta create it...`);
     try {
