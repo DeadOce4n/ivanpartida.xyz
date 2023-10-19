@@ -1,5 +1,5 @@
 .docker:
-  image: node:18-bullseye-slim
+  image: node:18-slim
   services:
     - docker:${DOCKER_VERSION}-dind
   variables:
@@ -18,10 +18,10 @@
     - pnpm config set store-dir .pnpm-store
     - apt -qq update -y && apt -qq install -y docker.io
 
-build-deploy:
+dagger:
   extends: [.dagger]
   script:
-    - pnpm install --frozen-lockfile
+    - pnpm --filter=ci install -D --frozen-lockfile
     - pnpm dagger
   cache:
     key:
