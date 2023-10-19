@@ -1,0 +1,37 @@
+.docker:
+  image: node:18-bullseye-slim
+  services:
+    - docker:${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: '1'
+    DOCKER_TLS_CERTDIR: '/certs'
+    DOCKER_CERT_PATH: '/certs/client'
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: '20.10.16'
+
+.dagger:
+  extends: [.docker]
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@latest-8 --activate
+    - pnpm config set store-dir .pnpm-store
+    - apt -qq update -y && apt -qq install -y docker.io
+
+build-deploy:
+  extends: [.dagger]
+  script:
+    - pnpm install --frozen-lockfile
+    - pnpm dagger
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_REF_PROTECTED == "true" && $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == 'web'
+  tags:
+    - personal

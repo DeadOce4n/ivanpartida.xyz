@@ -16,6 +16,25 @@
     "check": {},
     "genpasswd": {
       "cache": false
+    },
+    "affected": {
+      "cache": false
+    },
+    "dagger": {
+      "cache": false
     }
-  }
+  },
+  "globalPassThroughEnv": [
+    "KUBE_CLUSTER_HOST",
+    "KUBE_CA_DATA",
+    "KUBE_CERT_DATA",
+    "KUBE_KEY_DATA",
+    "CI_PIPELINE_SOURCE",
+    "CI_MERGE_REQUEST_TARGET_BRANCH_NAME",
+    "CI_MERGE_REQUEST_SOURCE_BRANCH_NAME",
+    "CI_PROJECT_PATH",
+    "CI_COMMIT_REF_NAME",
+    "CI_PIPELINE_SOURCE",
+    "GITLAB_TOKEN"
+  ]
 }
