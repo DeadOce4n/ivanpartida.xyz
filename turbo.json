@@ -43,6 +43,8 @@
     "DOCKER_DRIVER",
     "DOCKER_VERSION",
     "CI",
-    "TARGETS"
+    "TARGETS",
+    "CLOUDFLARE_API_TOKEN",
+    "CLOUDFLARE_ACCOUNT_ID"
   ]
 }

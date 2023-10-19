@@ -36,7 +36,7 @@ connect(
     let filter: string[];
 
     if (process.env.TARGETS) {
-      filter = process.env.TARGETS.split(',')
+      filter = process.env.TARGETS.split(',');
     } else if (pipelineSource === 'merge_request_event') {
       filter = [`...[${targetBranch}...${sourceBranch}]`];
     } else if (latestSuccessfulPipeline) {
@@ -100,28 +100,17 @@ connect(
         .withExec(['git', 'fetch']);
     }
 
-    await lint.withExec(['pnpm', 'install', '--frozen-lockfile']).sync();
-
     await lint
-      .withExec(['pnpm', 'exec', 'turbo', 'run', 'lint', ...filterArgs])
-      .sync();
-
-    await lint
-      .withExec(['pnpm', 'exec', 'turbo', 'run', 'check', ...filterArgs])
+      .withExec(['pnpm', 'install', '--frozen-lockfile'])
+      .withExec(['turbo', 'run', 'lint', ...filterArgs])
+      .withExec(['turbo', 'run', 'check', ...filterArgs])
       .sync();
 
     if (process.env.CI_PIPELINE_SOURCE !== 'merge_request_event') {
       console.log('Building and uploading image...');
 
       const affectedOutput = await lint
-        .withExec([
-          'pnpm',
-          'exec',
-          'turbo',
-          'run',
-          'affected',
-          ...filterArgs,
-        ])
+        .withExec(['pnpm', 'exec', 'turbo', 'run', 'affected', ...filterArgs])
         .stdout();
 
       const affectedApps = affectedOutput
