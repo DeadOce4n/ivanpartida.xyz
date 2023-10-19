@@ -225,8 +225,8 @@ importers:
   packages/ci:
     dependencies:
       '@dagger.io/dagger':
-        specifier: 0.8.4
-        version: 0.8.4
+        specifier: ^0.8.8
+        version: 0.8.8
       '@kubernetes/client-node':
         specifier: ^0.19.0
         version: 0.19.0
@@ -851,14 +851,14 @@ packages:
       kuler: 2.0.0
     dev: false
 
-  /@dagger.io/dagger@0.8.4:
-    resolution: {integrity: sha512-olSHQMJD7Nc6Tm282BO+Hq9FAdyBv4A7dqp1GN7vC2XWMKFR9sy+ZrSP0q8NzenKSX5/rUz4xsGuxfIpmJrrOw==}
+  /@dagger.io/dagger@0.8.8:
+    resolution: {integrity: sha512-H3rJIqHo1EStWHQIoKovcRhiGh50++l8cPxst8TnTNkPTeJ6MuUqlb2+7JcoKrhIDBQvj2dsIVDkiOdpkaiCqg==}
     engines: {node: '>=16'}
     dependencies:
       '@lifeomic/axios-fetch': 3.0.1
       adm-zip: 0.5.10
       env-paths: 3.0.0
-      execa: 7.2.0
+      execa: 8.0.1
       graphql: 16.8.1
       graphql-request: 6.1.0(graphql@16.8.1)
       graphql-tag: 2.12.6(graphql@16.8.1)
@@ -3482,6 +3482,7 @@ packages:
       onetime: 6.0.0
       signal-exit: 3.0.7
       strip-final-newline: 3.0.0
+    dev: true
 
   /execa@8.0.1:
     resolution: {integrity: sha512-VyhnebXciFV2DESc+p6B+y0LjSm0krU4OgJN44qFAhBY0TJ+1V61tYD2+wHusZ6F9n5K+vl8k0sTy7PEfV4qpg==}
@@ -3756,6 +3757,7 @@ packages:
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
+    dev: true
 
   /get-stream@8.0.1:
     resolution: {integrity: sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==}
@@ -4210,6 +4212,7 @@ packages:
   /human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
+    dev: true
 
   /human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
