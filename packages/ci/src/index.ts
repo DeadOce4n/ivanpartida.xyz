@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 
 import { getLatestSuccessfulPipeline } from '@/gitlab.ts';
 import * as deployments from '@/deployments/index.ts';
+import { devDependencies } from '@/../../../package.json';
 
 try {
   const envPath = path.resolve('./.env');
@@ -67,7 +68,14 @@ connect(
         client.host().directory('.', {
           exclude: ['node_modules', '**/node_modules'],
         }),
-      );
+      )
+      .withExec([
+        'npm',
+        'i',
+        '-g',
+        `turbo@${devDependencies.turbo.replace('^', '')}`,
+      ]);
+
     if (process.env.CI !== 'true') {
       lint
         .withFile(
@@ -87,6 +95,7 @@ connect(
         )
         .withExec(['git', 'fetch']);
     }
+
     await lint.withExec(['pnpm', 'install', '--frozen-lockfile']).sync();
 
     await lint
