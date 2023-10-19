@@ -21,7 +21,7 @@
 dagger:
   extends: [.dagger]
   script:
-    - pnpm --filter=ci install -D --frozen-lockfile
+    - pnpm --filter=ci install --frozen-lockfile
     - pnpm dagger
   cache:
     key:
