@@ -42,6 +42,7 @@
     "DOCKER_CERT_PATH",
     "DOCKER_DRIVER",
     "DOCKER_VERSION",
-    "CI"
+    "CI",
+    "TARGETS"
   ]
 }

@@ -12,5 +12,6 @@ declare namespace NodeJS {
     CI_PIPELINE_SOURCE?: string;
     GITLAB_TOKEN?: string;
     CI?: string;
+    TARGETS?: string;
   }
 }
