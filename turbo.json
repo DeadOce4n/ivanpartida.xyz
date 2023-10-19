@@ -41,6 +41,7 @@
     "DOCKER_TLS_CERTDIR",
     "DOCKER_CERT_PATH",
     "DOCKER_DRIVER",
-    "DOCKER_VERSION"
+    "DOCKER_VERSION",
+    "CI"
   ]
 }

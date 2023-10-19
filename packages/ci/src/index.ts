@@ -67,24 +67,27 @@ connect(
         client.host().directory('.', {
           exclude: ['node_modules', '**/node_modules'],
         }),
-      )
-      .withFile(
-        'ssh_key',
-        client.host().file(path.join(os.homedir(), '.ssh', 'id_ed25519')),
-        { permissions: 0o600 },
-      )
-      .withExec(['mkdir', '-p', '/root/.ssh'])
-      .withExec([
-        'bash',
-        '-c',
-        'ssh-keyscan -t rsa gitlab.com >> /root/.ssh/known_hosts',
-      ])
-      .withEnvVariable(
-        'GIT_SSH_COMMAND',
-        "ssh -i /app/ssh_key -F /dev/null -o 'IdentitiesOnly yes'",
-      )
-      .withExec(['git', 'fetch'])
-      .withExec(['pnpm', 'install', '--frozen-lockfile']);
+      );
+    if (process.env.CI !== 'true') {
+      lint
+        .withFile(
+          'ssh_key',
+          client.host().file(path.join(os.homedir(), '.ssh', 'id_ed25519')),
+          { permissions: 0o600 },
+        )
+        .withExec(['mkdir', '-p', '/root/.ssh'])
+        .withExec([
+          'bash',
+          '-c',
+          'ssh-keyscan -t rsa gitlab.com >> /root/.ssh/known_hosts',
+        ])
+        .withEnvVariable(
+          'GIT_SSH_COMMAND',
+          "ssh -i /app/ssh_key -F /dev/null -o 'IdentitiesOnly yes'",
+        )
+        .withExec(['git', 'fetch']);
+    }
+    await lint.withExec(['pnpm', 'install', '--frozen-lockfile']).sync();
 
     await lint
       .withExec(['pnpm', 'exec', 'turbo', 'run', 'lint', `--filter=${filter}`])

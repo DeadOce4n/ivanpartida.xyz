@@ -11,5 +11,6 @@ declare namespace NodeJS {
     CI_COMMIT_REF_NAME?: string;
     CI_PIPELINE_SOURCE?: string;
     GITLAB_TOKEN?: string;
+    CI?: string;
   }
 }
