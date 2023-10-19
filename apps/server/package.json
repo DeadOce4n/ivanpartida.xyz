@@ -9,7 +9,8 @@
     "dev": "NODE_ENV=development tsx watch -r dotenv/config src/server.ts",
     "genpasswd": "tsx genpasswd.ts",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
-    "check": "tsc"
+    "check": "tsc",
+    "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""
   },
   "keywords": [],
   "author": "",

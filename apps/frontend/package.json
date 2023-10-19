@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --fix \"./src/**/*.{ts,astro,svelte}\" && prettier -w --ignore-unknown \"./src/**/*\"",
-    "check": "astro check && svelte-check"
+    "check": "astro check src/ && svelte-check",
+    "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""
   },
   "dependencies": {
     "@astrojs/svelte": "^4.0.3",

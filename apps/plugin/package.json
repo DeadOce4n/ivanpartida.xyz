@@ -7,7 +7,8 @@
     "dev": "tsx build.ts --watch",
     "build": "tsx build.ts",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
-    "check": "tsc"
+    "check": "tsc",
+    "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""
   },
   "keywords": [],
   "author": "",
