@@ -57,7 +57,10 @@
     icons[file?.filetype ?? 'default']?.colorClass ?? icons.default.colorClass;
 </script>
 
-<div class="bg-gray-light flex w-full flex-col gap-4 p-4 shadow-md">
+<div
+  class="bg-gray-light flex w-full flex-col gap-4 p-4 shadow-md"
+  id="currently-editing"
+>
   <div class="flex flex-row items-center gap-2">
     <Neovim class="text-green text-lg" />
     <span class="text-sm font-bold">Currently editing:</span>

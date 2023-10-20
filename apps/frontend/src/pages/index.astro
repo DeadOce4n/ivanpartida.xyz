@@ -48,6 +48,8 @@ import Flask from 'icons:astro/simple-icons/flask';
 import DataDog from 'icons:astro/simple-icons/datadog';
 import Nginx from 'icons:astro/simple-icons/nginx';
 import Traefik from 'icons:astro/simple-icons/traefikproxy';
+import LevelDB from 'icons:astro/logos/leveldb';
+import ESBuild from 'icons:astro/simple-icons/esbuild';
 import { SEO } from 'astro-seo';
 
 import Layout from '@/layouts/Layout.astro';
@@ -386,19 +388,30 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
               icon: AstroIcon,
               color: 'orange',
             },
+            { content: 'Svelte', icon: Svelte, color: 'orange' },
             {
               content: 'TailwindCSS',
               icon: TailwindCSS,
               color: 'blue',
             },
+            { content: 'Zod', icon: Zod, color: 'blue' },
+            { content: 'LevelDB', icon: LevelDB, color: 'green' },
+            { content: 'Turborepo', icon: Turborepo, color: 'blue' },
+            { content: 'ESBuild', icon: ESBuild, color: 'yellow' },
+            { content: 'Docker', icon: Docker, color: 'blue' },
+            { content: 'Kubernetes', icon: Kubernetes, color: 'blue' },
             {
               content: 'Cloudflare Pages',
               icon: CloudflarePages,
               color: 'orange',
             },
+            { content: 'GitLab CI', icon: GitLab, color: 'orange' },
           ]}
         >
-          This very website!
+          This very website! A simple yet over-engineered website about me and
+          my projects, with a little component that <a href="#currently-editing"
+            >shows what I'm working on in real time</a
+          >.
         </ProjectEntry>
       </ul>
     </section>
