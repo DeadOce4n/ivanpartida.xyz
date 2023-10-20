@@ -6,6 +6,12 @@
       "outputs": ["dist/**"],
       "dotEnv": [".env.production", ".env.production.local", ".env"]
     },
+    "frontend#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "dotEnv": [".env.production", ".env.production.local"],
+      "env": ["PUBLIC_WEBSOCKET_URI"]
+    },
     "lint": {},
     "dev": {
       "cache": false,

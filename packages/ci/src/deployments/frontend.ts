@@ -31,6 +31,7 @@ export const deploy = async (client: Client, cache: CacheVolume) => {
       .withExec(['turbo', 'prune', 'frontend'])
       .withExec(['pnpm', 'install', '--frozen-lockfile'])
       .withEnvVariable('CI_COMMIT_SHORT_SHA', process.env.CI_COMMIT_SHORT_SHA)
+      .withEnvVariable('PUBLIC_WEBSOCKET_URI', process.env.PUBLIC_WEBSOCKET_URI)
       .withExec(['pnpm', '--filter=frontend', 'build'])
       .withEnvVariable('CLOUDFLARE_API_TOKEN', process.env.CLOUDFLARE_API_TOKEN)
       .withEnvVariable(

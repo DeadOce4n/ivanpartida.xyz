@@ -16,5 +16,6 @@ declare namespace NodeJS {
     CLOUDFLARE_API_TOKEN: string;
     CLOUDFLARE_ACCOUNT_ID: string;
     CI_COMMIT_SHORT_SHA: string;
+    PUBLIC_WEBSOCKET_URI: string;
   }
 }
