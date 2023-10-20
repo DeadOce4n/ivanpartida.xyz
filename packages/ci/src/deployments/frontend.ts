@@ -32,6 +32,10 @@ export const deploy = async (client: Client, cache: CacheVolume) => {
       .withExec(['pnpm', 'install', '--frozen-lockfile'])
       .withExec(['pnpm', '--filter=frontend', 'build'])
       .withEnvVariable('CLOUDFLARE_API_TOKEN', process.env.CLOUDFLARE_API_TOKEN)
+      .withEnvVariable(
+        'CLOUDFLARE_ACCOUNT_ID',
+        process.env.CLOUDFLARE_ACCOUNT_ID,
+      )
       .withExec([
         'wrangler',
         'pages',
