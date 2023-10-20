@@ -25,6 +25,7 @@
   "dependencies": {
     "@msgpack/msgpack": "3.0.0-beta2",
     "neovim": "^4.10.1",
+    "simple-git": "^3.20.0",
     "ws": "^8.14.2"
   },
   "lint-staged": {

@@ -3,6 +3,7 @@ import WebSocket from 'ws';
 import { encode } from '@msgpack/msgpack';
 import path from 'node:path';
 import os from 'node:os';
+import simpleGit from 'simple-git';
 
 import { getFileInfo, getRemoteUrl } from './utils/strings';
 
@@ -65,12 +66,15 @@ export default async function (plugin: NvimPlugin) {
   };
 
   let cwd: string;
+  const git = simpleGit();
 
   plugin.registerAutocmd(
     'VimEnter',
     async () => {
       const uriFromConfig = await plugin.nvim.getVar('portfolio_ws_uri');
       cwd = await plugin.nvim.callFunction('getcwd');
+
+      await git.cwd(cwd);
 
       if (
         typeof uriFromConfig === 'string' &&
@@ -145,6 +149,7 @@ export default async function (plugin: NvimPlugin) {
     'DirChanged',
     async () => {
       cwd = (await plugin.nvim.callFunction('getcwd')) as string;
+      await git.cwd(cwd);
     },
     { pattern: '*' },
   );
@@ -157,12 +162,9 @@ export default async function (plugin: NvimPlugin) {
 
         const { filename, filetype } = await getFileInfo(buffer, cwd);
 
-        const isRepo =
-          (await plugin.nvim.commandOutput(
-            'Git rev-parse --is-inside-work-tree',
-          )) === 'true';
+        const isRepo = await git.checkIsRepo();
 
-        const remoteUrl = isRepo ? await getRemoteUrl(plugin) : null;
+        const remoteUrl = isRepo ? await getRemoteUrl(git) : null;
 
         const baseDir = cwd.split(path.sep).at(-1)!;
 

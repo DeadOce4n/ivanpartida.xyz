@@ -1,11 +1,17 @@
-import type { NvimPlugin } from 'neovim';
-import type { Buffer } from 'neovim/lib/api/Buffer';
+import type { Buffer } from 'neovim';
 import path from 'node:path';
+import type { SimpleGit } from 'simple-git';
 
-export const getRemoteUrl = async (plugin: NvimPlugin) => {
-  const maybeRemoteUrl = await plugin.nvim.commandOutput(
-    'Git remote get-url origin',
-  );
+export const getRemoteUrl = async (git: SimpleGit) => {
+  const maybeRemoteUrl = await git
+    .getRemotes(true)
+    .then((remotes) => remotes.find((remote) => remote.name === 'origin'))
+    .then((origin) => {
+      if (origin) {
+        return origin.refs.fetch;
+      }
+      return 'fatal:';
+    });
 
   let remoteUrl: string | null = null;
 
