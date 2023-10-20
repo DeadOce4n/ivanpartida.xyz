@@ -65,3 +65,15 @@ export const getDockerIgnore = async ({
       .map((pattern) => `**/${pattern}`),
   );
 };
+
+export class DeployError extends Error {
+  constructor(
+    message: string,
+    public readonly packageName: string,
+  ) {
+    super(message);
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    Error.captureStackTrace(this);
+  }
+}

@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import { getLatestSuccessfulPipeline } from '@/gitlab.ts';
 import * as deployments from '@/deployments/index.ts';
 import { devDependencies } from '@/../../../package.json';
+import type { DeployError } from './utils.ts';
 
 try {
   const envPath = path.resolve('./.env');
@@ -127,15 +128,33 @@ connect(
         }),
       );
 
+      const deployed: string[] = [],
+        notDeployed: string[] = [];
+
       maybeDeployed.forEach((app) => {
         const status = app.status;
         if (status === 'fulfilled') {
-          console.log(`${app.value} ✅`);
+          deployed.push(app.value);
         } else {
-          const error = app.reason as Error;
-          console.error(`${error.cause as string} ❌: ${error.message}`);
+          const error = app.reason as DeployError;
+          notDeployed.push(error.packageName);
         }
       });
+
+      console.info(
+        `Deployed the following packages successfully:\n${deployed.join(
+          '\n- ',
+        )}`,
+      );
+
+      if (notDeployed.length > 0) {
+        console.error(
+          `Deployment failed for the following packages:\n${notDeployed.join(
+            '\n- ',
+          )}`,
+        );
+        process.exit(1);
+      }
     }
   },
   { LogOutput: process.stderr, Workdir: '../..' },
