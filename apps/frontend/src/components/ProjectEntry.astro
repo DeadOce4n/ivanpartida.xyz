@@ -1,5 +1,6 @@
 ---
 import ExternalLinkFill from 'icons:astro/mingcute/external-link-fill';
+import Tool from 'icons:astro/mingcute/tool-fill';
 import TechBadge, {
   type Props as TechBadgeProps,
 } from '@/components/TechBadge.astro';
@@ -7,7 +8,7 @@ import TechBadge, {
 type Props = {
   name: string;
   stack: TechBadgeProps[];
-  link: string;
+  link?: string;
 };
 
 const { name, stack, link } = Astro.props;
@@ -17,14 +18,27 @@ const { name, stack, link } = Astro.props;
   <div class="bg-gray-light flex flex-col gap-4 p-4 shadow-md md:gap-4 md:p-6">
     <div class="flex w-full flex-row items-center justify-between">
       <span class="font-bold">{name}</span>
-      <a
-        href={link}
-        target="_blank"
-        class="flex flex-row items-center gap-1 text-xs"
-      >
-        <span>Source code</span>
-        <span class="text-base"><ExternalLinkFill /></span>
-      </a>
+      {
+        link ? (
+          <a
+            href={link}
+            target="_blank"
+            class="flex flex-row items-center gap-1 text-xs"
+          >
+            <span>Source code</span>
+            <span class="text-base">
+              <ExternalLinkFill />
+            </span>
+          </a>
+        ) : (
+          <span class="flew-row text-yellow flex items-center gap-1 text-xs">
+            <span>WIP</span>
+            <span class="text-base">
+              <Tool />
+            </span>
+          </span>
+        )
+      }
     </div>
     <span class="mb-2 md:mb-1"><slot /></span>
     <div class="flex flex-row flex-wrap gap-1 md:gap-2">
