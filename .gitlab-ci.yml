@@ -25,7 +25,7 @@ dagger:
     CLOUDFLARE_ACCOUNT_ID: $CLOUDFLARE_ACCOUNT_ID
     PUBLIC_WEBSOCKET_URI: $PUBLIC_WEBSOCKET_URI
   script:
-    - pnpm --filter=ci install --frozen-lockfile
+    - pnpm install --frozen-lockfile
     - pnpm dagger
   cache:
     key:

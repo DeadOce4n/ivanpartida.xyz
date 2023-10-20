@@ -7,7 +7,7 @@
     "format": "prettier --write --ignore-unknown \"./{apps,packages}/**/*\"",
     "check": "turbo run check",
     "affected": "turbo run affected",
-    "dagger": "turbo run dagger",
+    "dagger": "pnpm --filter ci dagger",
     "genpasswd": "turbo run genpasswd",
     "prepare": "test \"$CI\" = \"true\" || husky install"
   },
