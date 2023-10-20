@@ -3,6 +3,7 @@ import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/700.css';
 import '@fontsource/ibm-plex-mono/400-italic.css';
 import Commit from 'icons:astro/mingcute/git-commit-fill';
+import Palette from 'icons:astro/mingcute/palette-fill';
 
 import '@/app.css';
 import Topbar from '@/components/Topbar.astro';
@@ -17,8 +18,20 @@ import Topbar from '@/components/Topbar.astro';
       </div>
     </div>
   </main>
-  <footer class="border-t-gray-light grid place-items-center border-t-2">
-    <div class="text-gray-lighter flex flex-row items-center gap-2 py-8">
+  <footer
+    class="border-t-gray-light grid place-items-center gap-4 border-t-2 py-8"
+  >
+    <div class="text-gray-lighter flex flex-row items-center gap-2">
+      <Palette />
+      <span>
+        Color palette stolen from <a
+          href="https://github.com/rebelot/kanagawa.nvim"
+          class="underline"
+          target="_blank">kanagawa.nvim</a
+        >
+      </span>
+    </div>
+    <div class="text-gray-lighter flex flex-row items-center gap-2">
       <Commit />
       {import.meta.env.CI_COMMIT_SHORT_SHA ?? 'development'}
     </div>
