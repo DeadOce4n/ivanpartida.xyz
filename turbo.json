@@ -4,7 +4,8 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "dotEnv": [".env.production", ".env.production.local", ".env"]
+      "dotEnv": [".env.production", ".env.production.local", ".env"],
+      "env": ["CI_COMMIT_SHORT_SHA"]
     },
     "lint": {},
     "dev": {
