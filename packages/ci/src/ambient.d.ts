@@ -13,5 +13,7 @@ declare namespace NodeJS {
     GITLAB_TOKEN?: string;
     CI?: string;
     TARGETS?: string;
+    CLOUDFLARE_API_TOKEN: string;
+    CLOUDFLARE_ACCOUNT_ID: string;
   }
 }
