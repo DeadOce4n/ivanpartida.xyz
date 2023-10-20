@@ -4,8 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "dotEnv": [".env.production", ".env.production.local", ".env"],
-      "env": ["CI_COMMIT_SHORT_SHA"]
+      "dotEnv": [".env.production", ".env.production.local", ".env"]
     },
     "lint": {},
     "dev": {
@@ -46,6 +45,7 @@
     "CI",
     "TARGETS",
     "CLOUDFLARE_API_TOKEN",
-    "CLOUDFLARE_ACCOUNT_ID"
+    "CLOUDFLARE_ACCOUNT_ID",
+    "CI_COMMIT_SHORT_SHA"
   ]
 }
