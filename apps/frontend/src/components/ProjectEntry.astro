@@ -41,7 +41,7 @@ const { name, stack, link } = Astro.props;
       }
     </div>
     <span class="mb-2 md:mb-1"><slot /></span>
-    <div class="flex flex-row flex-wrap gap-1 md:gap-2">
+    <div class="flex flex-row flex-wrap gap-2">
       {stack.map((s) => <TechBadge {...s} />)}
     </div>
   </div>
