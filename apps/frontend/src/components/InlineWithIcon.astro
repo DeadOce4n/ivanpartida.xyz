@@ -1,15 +1,37 @@
 ---
-type Props = {
+import { cva, type VariantProps } from 'class-variance-authority';
+
+const variants = cva('inline-flex gap-2 text-sm', {
+  variants: {
+    color: {
+      normal: 'text-white',
+      red: 'text-red',
+      orange: 'text-orange',
+      yellow: 'text-yellow',
+      green: 'text-green',
+      blue: 'text-blue',
+      purple: 'text-purple',
+      pink: 'text-pink',
+    },
+  },
+  defaultVariants: {
+    color: 'normal',
+  },
+});
+
+type Variant = VariantProps<typeof variants>;
+
+export interface Props extends Variant {
   icon: astroHTML.JSX.Element;
   text: string;
   class?: string;
-};
+}
 
-const { icon, text, class: className } = Astro.props;
+const { icon, text, color } = Astro.props;
 const Icon = icon;
 ---
 
-<strong class:list={['inline-flex items-center gap-2 text-sm', className]}>
+<span class:list={[variants({ color }), 'overflow-visible']}>
   <Icon />
-  {text}
-</strong>
+  <strong class="text-inherit">{text}</strong>
+</span>
