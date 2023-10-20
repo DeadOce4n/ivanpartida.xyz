@@ -129,7 +129,7 @@ connect(
       );
 
       const deployed: string[] = [],
-        notDeployed: string[] = [];
+        notDeployed: DeployError[] = [];
 
       maybeDeployed.forEach((app) => {
         const status = app.status;
@@ -137,22 +137,24 @@ connect(
           deployed.push(app.value);
         } else {
           const error = app.reason as DeployError;
-          notDeployed.push(error.packageName);
+          notDeployed.push(error);
         }
       });
 
-      console.info(
-        `Deployed the following packages successfully:\n${deployed.join(
-          '\n- ',
-        )}`,
-      );
+      console.log('Deployed the following packages successfully:\n');
+
+      deployed.forEach((pkg) => {
+        console.log(`- ${pkg}\n`);
+      });
 
       if (notDeployed.length > 0) {
-        console.error(
-          `Deployment failed for the following packages:\n${notDeployed.join(
-            '\n- ',
-          )}`,
-        );
+        console.error('Deployment failed for the following packages:');
+
+        notDeployed.forEach((pkg) => {
+          console.log(`- ${pkg.packageName}`);
+          console.log(`\t${pkg.message}`);
+        });
+
         process.exit(1);
       }
     }
