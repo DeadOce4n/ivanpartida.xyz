@@ -4,12 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "dotEnv": [".env.production", ".env.production.local", ".env"]
-    },
-    "frontend#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"],
-      "dotEnv": [".env.production", ".env.production.local"],
+      "dotEnv": [".env.production", ".env.production.local", ".env"],
       "env": ["PUBLIC_WEBSOCKET_URI"]
     },
     "lint": {},
