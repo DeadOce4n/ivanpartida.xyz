@@ -34,20 +34,6 @@ connect(
       process.env.CI_PIPELINE_SOURCE ?? 'push',
     );
 
-    let filter: string[];
-
-    if (process.env.TARGETS) {
-      filter = process.env.TARGETS.split(',');
-    } else if (pipelineSource === 'merge_request_event') {
-      filter = [`...[origin/${targetBranch}...origin/${sourceBranch}]`];
-    } else if (latestSuccessfulPipeline) {
-      filter = [`...[HEAD^...${latestSuccessfulPipeline.commit}]`];
-    } else {
-      filter = ['...[HEAD^1]'];
-    }
-
-    const filterArgs = filter.map((f) => `--filter=${f}`);
-
     const lint = client
       .container()
       .from(baseImage)
@@ -100,9 +86,22 @@ connect(
         );
     }
 
+    let filter: string[];
+
+    if (process.env.TARGETS) {
+      filter = process.env.TARGETS.split(',');
+    } else if (pipelineSource === 'merge_request_event') {
+      filter = [`...[origin/${targetBranch}...origin/${sourceBranch}]`];
+      await lint.withExec(['git', 'fetch', 'origin', sourceBranch]).sync();
+    } else if (latestSuccessfulPipeline) {
+      filter = [`...[HEAD^...${latestSuccessfulPipeline.commit}]`];
+    } else {
+      filter = ['...[HEAD^1]'];
+    }
+
+    const filterArgs = filter.map((f) => `--filter=${f}`);
+
     await lint
-      .withExec(['git', 'fetch', 'origin', sourceBranch])
-      .withExec(['git', 'branch', '--list'])
       .withExec(['pnpm', 'install', '--frozen-lockfile'])
       .withExec(['turbo', 'run', 'lint', ...filterArgs])
       .withExec(['turbo', 'run', 'check', ...filterArgs])
