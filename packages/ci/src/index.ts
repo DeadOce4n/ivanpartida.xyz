@@ -39,7 +39,7 @@ connect(
     if (process.env.TARGETS) {
       filter = process.env.TARGETS.split(',');
     } else if (pipelineSource === 'merge_request_event') {
-      filter = [`...[${targetBranch}...${sourceBranch}]`];
+      filter = [`...[origin/${targetBranch}...origin/${sourceBranch}]`];
     } else if (latestSuccessfulPipeline) {
       filter = [`...[HEAD^...${latestSuccessfulPipeline.commit}]`];
     } else {
@@ -97,11 +97,12 @@ connect(
         .withEnvVariable(
           'GIT_SSH_COMMAND',
           "ssh -i /app/ssh_key -F /dev/null -o 'IdentitiesOnly yes'",
-        )
-        .withExec(['git', 'fetch']);
+        );
     }
 
     await lint
+      .withExec(['git', 'fetch', 'origin', sourceBranch])
+      .withExec(['git', 'branch', '--list'])
       .withExec(['pnpm', 'install', '--frozen-lockfile'])
       .withExec(['turbo', 'run', 'lint', ...filterArgs])
       .withExec(['turbo', 'run', 'check', ...filterArgs])
