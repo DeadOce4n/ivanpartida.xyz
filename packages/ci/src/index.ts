@@ -25,8 +25,8 @@ connect(
     const pipelineSource = process.env.CI_PIPELINE_SOURCE ?? 'push';
     const targetBranch =
       process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME ?? 'main';
-    const sourceBranch =
-      process.env.CI_MERGE_REQUEST_SOURCE_BRANCH_NAME ?? 'feature';
+    // const sourceBranch =
+    //   process.env.CI_MERGE_REQUEST_SOURCE_BRANCH_NAME ?? 'feature';
 
     const latestSuccessfulPipeline = await getLatestSuccessfulPipeline(
       process.env.CI_PROJECT_PATH ?? 'DeadOcean/ivanpartida.xyz',
@@ -91,8 +91,7 @@ connect(
     if (process.env.TARGETS) {
       filter = process.env.TARGETS.split(',');
     } else if (pipelineSource === 'merge_request_event') {
-      filter = [`...[origin/${targetBranch}...origin/${sourceBranch}]`];
-      await lint.withExec(['git', 'fetch', 'origin', sourceBranch]).sync();
+      filter = [`...[origin/${targetBranch}]`];
     } else if (latestSuccessfulPipeline) {
       filter = [`...[HEAD^...${latestSuccessfulPipeline.commit}]`];
     } else {
