@@ -61,6 +61,7 @@ import TechBadge, {
 import BaseHead from '@/components/BaseHead.astro';
 import WorkExpEntry from '@/components/WorkExpEntry.astro';
 import CurrentlyEditing from '@/components/CurrentlyEditing/CurrentlyEditing.svelte';
+import cv from '@/assets/doc/cv.pdf';
 
 const allTechs: TechBadgeProps[] = [
   { content: 'Linux', icon: Linux },
@@ -217,7 +218,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
       </div>
       <div class="not-prose w-fit">
         <a
-          href="https://cartelera-cultural.s3.us-west-1.amazonaws.com/CV_Ivan_Partida_15-Jun-2023.pdf"
+          href={cv}
           target="_blank"
           class="flex-0 bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 px-4 py-2 shadow-md transition-colors"
         >
