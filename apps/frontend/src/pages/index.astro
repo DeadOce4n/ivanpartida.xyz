@@ -50,6 +50,7 @@ import Nginx from 'icons:astro/simple-icons/nginx';
 import Traefik from 'icons:astro/simple-icons/traefikproxy';
 import LevelDB from 'icons:astro/logos/leveldb';
 import ESBuild from 'icons:astro/simple-icons/esbuild';
+import Vitest from 'icons:astro/logos/vitest';
 import { SEO } from 'astro-seo';
 
 import Layout from '@/layouts/Layout.astro';
@@ -337,6 +338,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         </ProjectEntry>
         <ProjectEntry
           name="Monglue"
+          link="https://gitlab.com/DeadOcean/monglue"
           stack={[
             {
               content: 'TypeScript',
@@ -353,11 +355,22 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
               icon: MongoDB,
               color: 'green',
             },
+            {
+              content: 'ESBuild',
+              icon: ESBuild,
+              color: 'yellow',
+            },
+            {
+              content: 'Vitest',
+              icon: Vitest,
+              color: 'green',
+            },
           ]}
         >
           A small wrapper around MongoDB's native Node.js driver that allows for
           type-safe joins between collections with great auto-completion
-          support.
+          support. This has some crazy generic types and unit tests for types
+          🤯.
         </ProjectEntry>
         <ProjectEntry
           name="Zodeculer"
