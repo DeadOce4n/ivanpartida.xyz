@@ -10,6 +10,14 @@ import Directory from 'icons:svelte/mingcute/directory-fill';
 import GitBranchFill from 'icons:svelte/mingcute/git-branch-fill';
 import Json from 'icons:svelte/mingcute/braces-fill';
 import Terminal from 'icons:svelte/mingcute/terminal-box-fill';
+import Markdown from 'icons:svelte/simple-icons/markdown';
+import Css from 'icons:svelte/simple-icons/css3';
+import Yaml from 'icons:svelte/simple-icons/yaml';
+import Docker from 'icons:svelte/simple-icons/docker';
+import Python from 'icons:svelte/logos/python';
+import Bash from 'icons:svelte/simple-icons/gnubash';
+import Go from 'icons:svelte/simple-icons/go';
+import Rust from 'icons:svelte/simple-icons/rust';
 
 import type IconForSvelte from 'icons:svelte/not-actually-a-module';
 
@@ -66,6 +74,33 @@ export const icons: {
   },
   FTerm: {
     icon: Terminal,
+  },
+  markdown: {
+    icon: Markdown,
+  },
+  css: {
+    icon: Css,
+    colorClass: 'text-blue',
+  },
+  yaml: {
+    icon: Yaml,
+  },
+  dockerfile: {
+    icon: Docker,
+    colorClass: 'text-blue',
+  },
+  python: {
+    icon: Python,
+  },
+  sh: {
+    icon: Bash,
+  },
+  go: {
+    icon: Go,
+    colorClass: 'text-blue',
+  },
+  rust: {
+    icon: Rust,
   },
   default: {
     icon: FileFill,
