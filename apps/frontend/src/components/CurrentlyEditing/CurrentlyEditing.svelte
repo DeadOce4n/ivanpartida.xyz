@@ -24,6 +24,7 @@
       if (socket) {
         socket.close();
       }
+      console.log(import.meta.env.PUBLIC_WEBSOCKET_URI);
       socket = new WebSocket(import.meta.env.PUBLIC_WEBSOCKET_URI);
       socket.onopen = () => {
         if (timer) {
@@ -90,19 +91,31 @@
           {file.baseDir}
         </svelte:element>
       </div>
-      <div class="flex flex-row items-center gap-2">
+      <div
+        class="
+          before:from-gray-light
+          relative
+          flex
+          w-full
+          flex-row
+          items-center
+          gap-2
+          whitespace-nowrap
+          before:absolute
+          before:right-0
+          before:top-0
+          before:h-full
+          before:w-6
+          before:bg-gradient-to-l
+          before:to-transparent
+          before:content-['']
+          "
+      >
         <svelte:component this={icon} class={iconColorClass} />
         <div
-          class="
-          w-full
-          overflow-x-hidden
-          overflow-ellipsis
-          whitespace-nowrap
-          hover:overflow-x-scroll
-          md:overflow-x-scroll
-          "
+          class="scrollbar-hide w-full overflow-x-scroll hover:overflow-x-scroll md:overflow-x-hidden"
         >
-          {file.filename}
+          <span class="pr-8">{file.filename}</span>
         </div>
       </div>
     </div>
