@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
 const variants = cva(
-  'flex flex-row items-center gap-2 bg-opacity-10 px-2 py-1',
+  'flex flex-row rounded-full items-center gap-2 bg-opacity-10',
   {
     variants: {
       color: {
@@ -17,8 +17,8 @@ const variants = cva(
         pink: 'text-pink bg-pink',
       },
       size: {
-        base: 'text-xs px-2 py-1',
-        lg: 'text-sm px-3 py-2',
+        base: 'text-xs px-3 py-2',
+        lg: 'text-sm px-4 py-3',
       },
     },
     defaultVariants: {

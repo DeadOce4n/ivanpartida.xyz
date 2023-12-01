@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@astrojs/svelte": "^4.0.3",
-    "@fontsource/ibm-plex-mono": "^5.0.8",
     "@msgpack/msgpack": "3.0.0-beta2",
     "astro": "^3.3.0",
     "svelte": "^4.0.0"
@@ -23,6 +22,7 @@
     "@astrojs/check": "^0.2.1",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@fontsource-variable/dm-sans": "^5.0.3",
     "@iconify-json/logos": "^1.1.37",
     "@iconify-json/mingcute": "^1.1.10",
     "@iconify-json/simple-icons": "^1.1.72",

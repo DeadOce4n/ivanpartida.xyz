@@ -22,7 +22,8 @@ export default {
         'white-dark': '#C8C093',
       },
       fontFamily: {
-        sans: ['IBM Plex Mono', ...defaultTheme.fontFamily.mono],
+        sans: ['DM Sans Variable', ...defaultTheme.fontFamily.sans],
+        mono: ['IBM Plex Mono', ...defaultTheme.fontFamily.mono],
       },
       typography: ({
         theme,

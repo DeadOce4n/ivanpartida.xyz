@@ -1,7 +1,5 @@
 ---
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/700.css';
-import '@fontsource/ibm-plex-mono/400-italic.css';
+import '@fontsource-variable/dm-sans';
 import Commit from 'icons:astro/mingcute/git-commit-fill';
 import Palette from 'icons:astro/mingcute/palette-fill';
 
@@ -9,20 +7,20 @@ import '@/app.css';
 import Topbar from '@/components/Topbar.astro';
 ---
 
-<body class="bg-gray flex h-full flex-col">
+<body class="bg-gray-dark flex h-full flex-col">
   <main class="flex-1">
     <div class="mx-auto flex w-11/12 max-w-3xl flex-col gap-10 py-4">
       <Topbar />
-      <div class="prose w-full max-w-none">
+      <div class="prose prose-lg w-full max-w-none">
         <slot />
       </div>
     </div>
   </main>
   <footer
-    class="border-t-gray-light grid place-items-center gap-4 border-t-2 py-8 text-sm sm:text-base"
+    class="border-t-gray grid place-items-center gap-4 border-t py-8 text-sm sm:text-base"
   >
     <div
-      class="text-gray-lighter flex flex-row items-center justify-center gap-2"
+      class="text-gray-light flex flex-row items-center justify-center gap-2"
     >
       <Palette />
       <span class="w-1/2 sm:w-fit">
@@ -33,7 +31,7 @@ import Topbar from '@/components/Topbar.astro';
         >
       </span>
     </div>
-    <div class="text-gray-lighter flex flex-row items-center gap-2">
+    <div class="text-gray-light flex flex-row items-center gap-2">
       <Commit />
       {import.meta.env.CI_COMMIT_SHORT_SHA ?? 'development'}
     </div>

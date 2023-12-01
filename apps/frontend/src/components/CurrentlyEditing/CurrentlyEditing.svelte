@@ -59,7 +59,7 @@
 </script>
 
 <div
-  class="bg-gray-light flex w-full flex-col gap-4 p-4 shadow-md"
+  class="bg-gray flex w-full flex-col gap-4 rounded-xl p-4 shadow-md md:p-6"
   id="currently-editing"
 >
   <div class="flex flex-row items-center gap-2">

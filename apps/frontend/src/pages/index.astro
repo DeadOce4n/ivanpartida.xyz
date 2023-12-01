@@ -41,7 +41,7 @@ import ReactQuery from 'icons:astro/simple-icons/reactquery';
 import Redux from 'icons:astro/simple-icons/redux';
 import Npm from 'icons:astro/simple-icons/npm';
 import Tmux from 'icons:astro/simple-icons/tmux';
-import Download from 'icons:astro/mingcute/download-2-fill';
+import Download from 'icons:astro/mingcute/download-3-fill';
 import EKS from 'icons:astro/simple-icons/amazoneks';
 import K3s from 'icons:astro/simple-icons/k3s';
 import Flask from 'icons:astro/simple-icons/flask';
@@ -145,11 +145,11 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         </span>
         <span class="animate-wiggle inline-block">👋</span>
       </h1>
-      <span class="text-white-dark mb-4 inline-block text-sm font-bold italic">
+      <span class="text-white-dark mb-4 inline-block font-bold">
         Full-Stack Engineer with a focus on <span
           class="decoration-red whitespace-nowrap underline decoration-wavy"
           >type-safety</span
-        > and tooling
+        >, tooling and DevOps culture
       </span>
       <p>
         I love all things web-dev related: frontend development with <InlineWithIcon
@@ -221,17 +221,17 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         <a
           href={cv}
           target="_blank"
-          class="flex-0 bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 px-4 py-2 shadow-md transition-colors"
+          class="flex-0 bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 rounded-lg px-4 py-2 shadow-md transition-colors"
         >
-          <span>Download my CV</span>
           <span><Download /></span>
+          <span>Download my resume</span>
         </a>
       </div>
     </section>
     <section>
       <h2>Projects</h2>
       <p>The following are some of my most important projects:</p>
-      <ul>
+      <ul class="flex list-none flex-col gap-0 pl-0 md:gap-2">
         <ProjectEntry
           name="SupraChat"
           link="https://gitlab.com/suprachat"

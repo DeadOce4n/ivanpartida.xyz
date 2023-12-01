@@ -10,7 +10,7 @@ h1,
 h2,
 h3,
 h4 {
-  @apply text-purple font-bold;
+  @apply text-purple font-black;
 }
 
 h1 {
@@ -27,6 +27,10 @@ h3 {
 
 h4 {
   @apply text-xl;
+}
+
+a {
+  @apply decoration-dashed;
 }
 
 @layer utilities {

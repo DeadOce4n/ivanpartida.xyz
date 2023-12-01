@@ -1,5 +1,5 @@
 ---
-import ExternalLinkFill from 'icons:astro/mingcute/external-link-fill';
+import ExternalLinkFill from 'icons:astro/mingcute/code-fill';
 import Tool from 'icons:astro/mingcute/tool-fill';
 import TechBadge, {
   type Props as TechBadgeProps,
@@ -14,8 +14,10 @@ type Props = {
 const { name, stack, link } = Astro.props;
 ---
 
-<li>
-  <div class="bg-gray-light flex flex-col gap-4 p-4 shadow-md md:gap-4 md:p-6">
+<li class="pl-0">
+  <div
+    class="bg-gray flex flex-col gap-4 rounded-xl p-4 shadow-md md:gap-4 md:p-6"
+  >
     <div class="flex w-full flex-row items-center justify-between">
       <span class="font-bold">{name}</span>
       {
@@ -23,12 +25,12 @@ const { name, stack, link } = Astro.props;
           <a
             href={link}
             target="_blank"
-            class="flex flex-row items-center gap-1 text-xs"
+            class="bg-gray-light hover:bg-gray-lighter flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
           >
-            <span>Source code</span>
             <span class="text-base">
               <ExternalLinkFill />
             </span>
+            <span>Source code</span>
           </a>
         ) : (
           <span class="flew-row text-yellow flex items-center gap-1 text-xs">
