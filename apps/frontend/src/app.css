@@ -30,7 +30,7 @@ h4 {
 }
 
 a {
-  @apply decoration-dashed;
+  @apply !decoration-dashed;
 }
 
 @layer utilities {
