@@ -10,7 +10,6 @@ import Fastify from 'icons:astro/simple-icons/fastify';
 import Kubernetes from 'icons:astro/simple-icons/kubernetes';
 import Docker from 'icons:astro/simple-icons/docker';
 import NodeJs from 'icons:astro/simple-icons/nodedotjs';
-import Hetzner from 'icons:astro/simple-icons/hetzner';
 import GitLab from 'icons:astro/simple-icons/gitlab';
 import PostgreSQL from 'icons:astro/simple-icons/postgresql';
 import TailwindCSS from 'icons:astro/simple-icons/tailwindcss';
@@ -23,7 +22,7 @@ import Git from 'icons:astro/simple-icons/git';
 import Pnpm from 'icons:astro/simple-icons/pnpm';
 import Turborepo from 'icons:astro/logos/turborepo-icon';
 import Linux from 'icons:astro/simple-icons/linux';
-import AWS from 'icons:astro/simple-icons/amazonaws';
+import S3 from 'icons:astro/simple-icons/amazons3';
 import Express from 'icons:astro/simple-icons/express';
 import Vite from 'icons:astro/logos/vitejs';
 import Koa from 'icons:astro/simple-icons/koa';
@@ -32,26 +31,20 @@ import Electron from 'icons:astro/simple-icons/electron';
 import Eslint from 'icons:astro/logos/eslint';
 import Prettier from 'icons:astro/logos/prettier';
 import Prisma from 'icons:astro/simple-icons/prisma';
-import Mongoose from 'icons:astro/simple-icons/mongoose';
-import ChakraUI from 'icons:astro/simple-icons/chakraui';
-import Mui from 'icons:astro/simple-icons/mui';
 import GitHub from 'icons:astro/simple-icons/github';
-import Postman from 'icons:astro/simple-icons/postman';
 import ReactQuery from 'icons:astro/simple-icons/reactquery';
-import Redux from 'icons:astro/simple-icons/redux';
 import Npm from 'icons:astro/simple-icons/npm';
-import Tmux from 'icons:astro/simple-icons/tmux';
 import Download from 'icons:astro/mingcute/download-3-fill';
 import EKS from 'icons:astro/simple-icons/amazoneks';
 import K3s from 'icons:astro/simple-icons/k3s';
 import Flask from 'icons:astro/simple-icons/flask';
-import DataDog from 'icons:astro/simple-icons/datadog';
 import Nginx from 'icons:astro/simple-icons/nginx';
 import Traefik from 'icons:astro/simple-icons/traefikproxy';
 import LevelDB from 'icons:astro/logos/leveldb';
 import ESBuild from 'icons:astro/simple-icons/esbuild';
 import Vitest from 'icons:astro/logos/vitest';
 import Webpack from 'icons:astro/simple-icons/webpack';
+import Vercel from 'icons:astro/simple-icons/vercel';
 import { SEO } from 'astro-seo';
 
 import Layout from '@/layouts/Layout.astro';
@@ -71,37 +64,23 @@ const allTechs: TechBadgeProps[] = [
   { content: 'Linux', icon: Linux },
   { content: 'Git', icon: Git, color: 'red' },
   { content: 'Bash', icon: Bash },
-  { content: 'tmux', icon: Tmux, color: 'green' },
   { content: 'Vite', icon: Vite, color: 'blue' },
   { content: 'Express', icon: Express },
   { content: 'Koa', icon: Koa },
   { content: 'Electron', icon: Electron, color: 'blue' },
   { content: 'Prisma', icon: Prisma },
-  { content: 'Mongoose', icon: Mongoose, color: 'red' },
-  { content: 'MUI', icon: Mui, color: 'blue' },
-  { content: 'ChakraUI', icon: ChakraUI, color: 'green' },
-  { content: 'Redux', icon: Redux, color: 'purple' },
   { content: 'ESLint', icon: Eslint, color: 'purple' },
   { content: 'Prettier', icon: Prettier, color: 'yellow' },
-  {
-    content: 'Turborepo',
-    icon: Turborepo,
-    color: 'normal',
-    class: '[&>span>svg>*:last-child]:fill-white',
-  },
   { content: 'pnpm', icon: Pnpm, color: 'yellow' },
   { content: 'npm', icon: Npm, color: 'red' },
   { content: 'GitHub', icon: GitHub },
-  { content: 'AWS', icon: AWS, color: 'orange' },
-  { content: 'EKS', icon: EKS, color: 'orange' },
+  { content: 'AWS S3', icon: S3, color: 'orange' },
+  { content: 'AWS EKS', icon: EKS, color: 'orange' },
   { content: 'k3s', icon: K3s, color: 'yellow' },
   { content: 'Træfik', icon: Traefik, color: 'blue' },
-  { content: 'DataDog', icon: DataDog, color: 'purple' },
   { content: 'Nginx', icon: Nginx, color: 'green' },
-  { content: 'Hetzner', icon: Hetzner, color: 'red' },
   { content: 'Python', icon: Python, color: 'yellow' },
   { content: 'Flask', icon: Flask },
-  { content: 'Postman', icon: Postman, color: 'orange' },
 ];
 
 const title = 'Ivan Partida | Full-Stack Engineer';
@@ -232,11 +211,11 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           </ul>
         </WorkExpEntry>
       </div>
-      <div class="not-prose w-fit">
+      <div class="not-prose grid place-items-center md:w-fit">
         <a
           href={cv}
           target="_blank"
-          class="flex-0 bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 rounded-lg px-4 py-2 shadow-md transition-colors"
+          class="bg-purple text-gray-dark hover:bg-pink flex items-center gap-2 rounded-lg px-4 py-2 shadow-md transition-colors"
         >
           <span><Download /></span>
           <span>Download my resume</span>
@@ -381,14 +360,14 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
               color: 'orange',
             },
             {
-              content: 'TailwindCSS',
-              icon: TailwindCSS,
-              color: 'blue',
-            },
-            {
               content: 'Node.js',
               icon: NodeJs,
               color: 'green',
+            },
+            {
+              content: 'TailwindCSS',
+              icon: TailwindCSS,
+              color: 'blue',
             },
             {
               content: 'PostgreSQL',
@@ -396,9 +375,8 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
               color: 'blue',
             },
             {
-              content: 'Cloudflare Pages',
-              icon: CloudflarePages,
-              color: 'orange',
+              content: 'Vercel',
+              icon: Vercel,
             },
           ]}
         >
