@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ExternalLinkFill from 'icons:astro/mingcute/code-fill';
 import Tool from 'icons:astro/mingcute/tool-fill';
 import TechBadge, {
@@ -9,42 +10,51 @@ type Props = {
   name: string;
   stack: TechBadgeProps[];
   link?: string;
+  image?: Parameters<typeof Image>[0] & astroHTML.JSX.IntrinsicAttributes;
 };
 
-const { name, stack, link } = Astro.props;
+const { name, stack, link, image } = Astro.props;
 ---
 
 <li class="pl-0">
-  <div
-    class="bg-gray flex flex-col gap-4 rounded-xl p-4 shadow-md md:gap-4 md:p-6"
-  >
-    <div class="flex w-full flex-row items-center justify-between">
-      <span class="font-bold">{name}</span>
-      {
-        link ? (
-          <a
-            href={link}
-            target="_blank"
-            class="bg-gray-light hover:bg-gray-lighter flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
-          >
-            <span class="text-base">
-              <ExternalLinkFill />
+  <div class="bg-gray flex flex-col rounded-xl sm:flex-row">
+    {
+      image && (
+        <Image
+          {...image}
+          class="my-0 h-[200px] w-full rounded-t-xl object-cover sm:h-auto sm:w-[300px] sm:rounded-l-xl sm:rounded-tr-none"
+        />
+      )
+    }
+    <div class="flex flex-col gap-4 p-4 shadow-md md:gap-4 md:p-6">
+      <div class="flex w-full flex-row items-center justify-between">
+        <span class="text-xl font-bold">{name}</span>
+        {
+          link ? (
+            <a
+              href={link}
+              target="_blank"
+              class="bg-gray-light hover:bg-gray-lighter flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
+            >
+              <span class="text-base">
+                <ExternalLinkFill />
+              </span>
+              <span>Source code</span>
+            </a>
+          ) : (
+            <span class="flew-row text-yellow flex items-center gap-1 text-xs">
+              <span>WIP</span>
+              <span class="text-base">
+                <Tool />
+              </span>
             </span>
-            <span>Source code</span>
-          </a>
-        ) : (
-          <span class="flew-row text-yellow flex items-center gap-1 text-xs">
-            <span>WIP</span>
-            <span class="text-base">
-              <Tool />
-            </span>
-          </span>
-        )
-      }
-    </div>
-    <span class="mb-2 md:mb-1"><slot /></span>
-    <div class="flex flex-row flex-wrap gap-2">
-      {stack.map((s) => <TechBadge {...s} />)}
+          )
+        }
+      </div>
+      <span class="mb-2 md:mb-1"><slot /></span>
+      <div class="flex flex-row flex-wrap gap-2">
+        {stack.map((s) => <TechBadge {...s} />)}
+      </div>
     </div>
   </div>
 </li>

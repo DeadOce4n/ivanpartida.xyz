@@ -63,6 +63,8 @@ import BaseHead from '@/components/BaseHead.astro';
 import WorkExpEntry from '@/components/WorkExpEntry.astro';
 import CurrentlyEditing from '@/components/CurrentlyEditing/CurrentlyEditing.svelte';
 import cv from '@/assets/doc/cv.pdf';
+import suprachat from '@/assets/img/suprachat.webp';
+import monglue from '@/assets/img/monglue.webp';
 
 const allTechs: TechBadgeProps[] = [
   { content: 'Linux', icon: Linux },
@@ -235,6 +237,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         <ProjectEntry
           name="SupraChat"
           link="https://gitlab.com/suprachat"
+          image={{ src: suprachat, alt: 'SupraChat' }}
           stack={[
             {
               content: 'TypeScript',
@@ -293,6 +296,103 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           managing channels.
         </ProjectEntry>
         <ProjectEntry
+          name="Monglue"
+          link="https://gitlab.com/DeadOcean/monglue"
+          image={{ src: monglue, alt: 'monglue' }}
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              color: 'blue',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              color: 'green',
+            },
+            {
+              content: 'MongoDB',
+              icon: MongoDB,
+              color: 'green',
+            },
+            {
+              content: 'ESBuild',
+              icon: ESBuild,
+              color: 'yellow',
+            },
+            {
+              content: 'Vitest',
+              icon: Vitest,
+              color: 'green',
+            },
+          ]}
+        >
+          Thin wrapper around MongoDB's native Node.js driver that allows for
+          type-safe joins between collections.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Zodeculer"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              color: 'blue',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              color: 'green',
+            },
+            {
+              content: 'Moleculer',
+              icon: Moleculer,
+              color: 'blue',
+            },
+            { content: 'Zod', icon: Zod, color: 'blue' },
+          ]}
+        >
+          A Moleculer microservice template with sane defaults for validations,
+          logging, and testing.
+        </ProjectEntry>
+        <ProjectEntry
+          name="Cartelera Cultural de Ensenada"
+          stack={[
+            {
+              content: 'TypeScript',
+              icon: TypeScript,
+              color: 'blue',
+            },
+            {
+              content: 'SvelteKit',
+              icon: Svelte,
+              color: 'orange',
+            },
+            {
+              content: 'TailwindCSS',
+              icon: TailwindCSS,
+              color: 'blue',
+            },
+            {
+              content: 'Node.js',
+              icon: NodeJs,
+              color: 'green',
+            },
+            {
+              content: 'PostgreSQL',
+              icon: PostgreSQL,
+              color: 'blue',
+            },
+            {
+              content: 'Cloudflare Pages',
+              icon: CloudflarePages,
+              color: 'orange',
+            },
+          ]}
+        >
+          A web platform for publishing and finding cultural events in the city
+          of Ensenada.
+        </ProjectEntry>
+        <ProjectEntry
           name="Portfolio"
           link="https://gitlab.com/DeadOcean/ivanpartida.xyz"
           stack={[
@@ -335,105 +435,6 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           my projects, with a little component that <a href="#currently-editing"
             >shows what I'm working on in real time</a
           >.
-        </ProjectEntry>
-        <ProjectEntry
-          name="Monglue"
-          link="https://gitlab.com/DeadOcean/monglue"
-          stack={[
-            {
-              content: 'TypeScript',
-              icon: TypeScript,
-              color: 'blue',
-            },
-            {
-              content: 'Node.js',
-              icon: NodeJs,
-              color: 'green',
-            },
-            {
-              content: 'MongoDB',
-              icon: MongoDB,
-              color: 'green',
-            },
-            {
-              content: 'ESBuild',
-              icon: ESBuild,
-              color: 'yellow',
-            },
-            {
-              content: 'Vitest',
-              icon: Vitest,
-              color: 'green',
-            },
-          ]}
-        >
-          A small wrapper around MongoDB's native Node.js driver that allows for
-          type-safe joins between collections with great auto-completion
-          support. This has some crazy generic types and unit tests for types
-          🤯.
-        </ProjectEntry>
-        <ProjectEntry
-          name="Zodeculer"
-          stack={[
-            {
-              content: 'TypeScript',
-              icon: TypeScript,
-              color: 'blue',
-            },
-            {
-              content: 'Node.js',
-              icon: NodeJs,
-              color: 'green',
-            },
-            {
-              content: 'Moleculer',
-              icon: Moleculer,
-              color: 'blue',
-            },
-            { content: 'Zod', icon: Zod, color: 'blue' },
-          ]}
-        >
-          A Moleculer microservice template with sane defaults for validations,
-          logging, and testing, offering type-safety through the whole
-          request-response cycle.
-        </ProjectEntry>
-        <ProjectEntry
-          name="Cartelera Cultural de Ensenada"
-          stack={[
-            {
-              content: 'TypeScript',
-              icon: TypeScript,
-              color: 'blue',
-            },
-            {
-              content: 'SvelteKit',
-              icon: Svelte,
-              color: 'orange',
-            },
-            {
-              content: 'TailwindCSS',
-              icon: TailwindCSS,
-              color: 'blue',
-            },
-            {
-              content: 'Node.js',
-              icon: NodeJs,
-              color: 'green',
-            },
-            {
-              content: 'PostgreSQL',
-              icon: PostgreSQL,
-              color: 'blue',
-            },
-            {
-              content: 'Cloudflare Pages',
-              icon: CloudflarePages,
-              color: 'orange',
-            },
-          ]}
-        >
-          A web platform for publishing and finding cultural events in the city
-          of Ensenada.
         </ProjectEntry>
       </ul>
     </section>
