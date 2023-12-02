@@ -51,6 +51,7 @@ import Traefik from 'icons:astro/simple-icons/traefikproxy';
 import LevelDB from 'icons:astro/logos/leveldb';
 import ESBuild from 'icons:astro/simple-icons/esbuild';
 import Vitest from 'icons:astro/logos/vitest';
+import Webpack from 'icons:astro/simple-icons/webpack';
 import { SEO } from 'astro-seo';
 
 import Layout from '@/layouts/Layout.astro';
@@ -164,57 +165,68 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           text="Node.js"
           icon={NodeJs}
           color="green"
-        /> and <InlineWithIcon text="Python" icon={Python} color="yellow" />,
-        and I can work comfortably in (almost) any part of the stack.
+        /> and <InlineWithIcon text="Python" icon={Python} color="yellow" />.
       </p>
       <p>
         My favorite programming language is <InlineWithIcon
           text="TypeScript"
           icon={TypeScript}
           color="blue"
-        />, so much that I even use it for DevOps (which I am in love with but
-        have barely scratched the surface)! Given the complexity of modern web
-        apps, I think full-stack type-safety is a must.
+        /> (I even use it for CI/CD). Given the complexity of modern web apps, I
+        think full-stack type-safety is a hard requirement.
       </p>
       <p>
-        I also love the terminal, so I use a lot of CLI and TUI tools on a daily
-        basis. <InlineWithIcon text="Neovim" icon={NeoVim} color="green" />
-         is my favorite text editor because it allows me to code
+        I do most of my work directly inside my terminal, so I use a lot of CLI
+        tools on a daily basis. <InlineWithIcon
+          text="Neovim"
+          icon={NeoVim}
+          color="green"
+        />
+         is my text editor of choice because it allows me to code
         <em>blazingly fast</em>.
       </p>
     </section>
     <CurrentlyEditing client:load />
     <section>
       <h2>Work experience</h2>
-      <div class="mb-8 px-4 pt-4">
+      <div class="mb-8 px-2 pt-4 md:px-4">
         <WorkExpEntry
           employer="G-Global"
-          jobTitle="Full-Stack Developer - DevOps Engineer"
+          jobTitle="Full-Stack Engineer"
           period="May 2022 - Present"
         >
-          <ul class="ml-4">
+          <ul class="prose-base md:prose-lg ml-4">
             <li>
-              Contributed to the development and maintenance of the company's
-              internal software products.
-            </li>
-            <li>
-              Improved the team's overall development experience by
-              standardizing the development toolchain and mentoring other team
-              members about its correct usage.
-            </li>
-            <li>
-              Shortened the time to production for all of the company's products
-              significantly by developing a tool for massively deploying and
-              managing microservices through the <InlineWithIcon
-                text="GitLab"
-                icon={GitLab}
-                color="orange"
-              />
-               and <InlineWithIcon
-                text="Kubernetes"
-                icon={Kubernetes}
+              Collaborated on the development of multiple user-facing apps from
+              frontend to backend using <InlineWithIcon
+                text="React"
+                icon={React}
                 color="blue"
-              /> APIs.
+              /> and <InlineWithIcon
+                text="Node.js"
+                icon={NodeJs}
+                color="green"
+              />.
+            </li>
+            <li>
+              Standardized the projects’ toolchain to achieve consistency on
+              code style and best practices, resulting in a 40% decrease in code
+              review time.
+            </li>
+            <li>
+              Migrated two large React apps from an older toolchain (<InlineWithIcon
+                text="Webpack"
+                icon={Webpack}
+                color="blue"
+              />) to a modern one (<InlineWithIcon
+                text="Vite"
+                icon={Vite}
+                color="blue"
+              />), decreasing their build time by as much as 80%.
+            </li>
+            <li>
+              Optimized the projects’ CI/CD pipelines to decrease their time to
+              production upwards of 25%.
             </li>
           </ul>
         </WorkExpEntry>
