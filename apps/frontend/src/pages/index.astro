@@ -106,7 +106,7 @@ const allTechs: TechBadgeProps[] = [
 
 const title = 'Ivan Partida | Full-Stack Engineer';
 const description =
-  'Full-Stack Engineer with a strong focus on type-safety and tooling';
+  'Full-Stack Engineer and DevOps enthusiast with a focus on type-safety and Developer Experience.';
 const ogImage = 'https://ivanpartida.xyz/og.webp';
 ---
 
@@ -115,7 +115,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
     <BaseHead />
     <SEO
       title={title}
-      description="Full-Stack Engineer with a strong focus on type-safety"
+      {description}
       canonical="https://ivanpartida.xyz"
       openGraph={{
         basic: {
@@ -148,11 +148,10 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         </span>
         <span class="animate-wiggle inline-block">👋</span>
       </h1>
-      <span class="text-white-dark mb-4 inline-block font-bold">
-        Full-Stack Engineer with a focus on <span
-          class="decoration-red whitespace-nowrap underline decoration-wavy"
-          >type-safety</span
-        >, tooling and DevOps culture
+      <span
+        class="text-white-dark mb-4 inline-flex items-center gap-1 font-bold"
+      >
+        Full-Stack Engineer and DevOps enthusiast
       </span>
       <p>
         I love all things web-dev related: frontend development with <InlineWithIcon
@@ -444,7 +443,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           ]}
         >
           This very website! A simple yet over-engineered website about me and
-          my projects, with a little component that <a href="#currently-editing"
+          my projects, with a component that <a href="#currently-editing"
             >shows what I'm working on in real time</a
           >.
         </ProjectEntry>
@@ -472,15 +471,13 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
       <h2>Why you should hire me</h2>
       <ul>
         <li>
-          I'm an easy-going person, I dislike conflicts (merge and social).
+          I'm an easy-going person; I dislike conflicts, whether merge or
+          social.
         </li>
-        <li>I'm a strong team player, I'll help whenever I can.</li>
+        <li>I'm a team player, I'll help whenever I can.</li>
+        <li>I have a strong focus on correctness and robustness.</li>
         <li>
-          I have a strong focus on correctness and robustness, I like to apply
-          strict coding practices.
-        </li>
-        <li>
-          I can actually write <InlineWithIcon
+          I can write <InlineWithIcon
             text="TypeScript"
             icon={TypeScript}
             color="blue"
@@ -488,14 +485,13 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         </li>
         <li>
           I value <a href="https://grugbrain.dev/" target="_blank">simplicity</a
-          >, I think it leads to better software.
+          >, I think it leads to more maintainable software.
         </li>
         <li>
           <a href="https://xkcd.com/293/" class="fill-white" target="_blank">
             I actually read the docs.
           </a>
         </li>
-        <li>Please?</li>
       </ul>
     </section>
   </Layout>
