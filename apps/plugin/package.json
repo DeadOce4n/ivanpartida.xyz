@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "dev": "tsx build.ts --watch",
-    "build": "tsx build.ts",
+    "dev": "node build.js --watch",
+    "build": "node build.js",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
     "check": "tsc",
     "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""
@@ -19,7 +20,6 @@
     "esbuild": "^0.19.4",
     "eslint-config-custom": "workspace:^",
     "tsconfig": "workspace:^",
-    "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
