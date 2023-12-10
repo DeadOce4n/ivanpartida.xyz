@@ -26,9 +26,9 @@ const { name, stack, link, image } = Astro.props;
         />
       )
     }
-    <div class="flex w-full flex-col gap-4 p-6 shadow-md md:gap-4">
+    <div class="flex w-full flex-col gap-4 p-4 shadow-md sm:p-6 md:gap-4">
       <div class="flex w-full flex-row items-center justify-between">
-        <span class="text-xl font-bold">{name}</span>
+        <span class="text-purple text-xl font-black">{name}</span>
         {
           link ? (
             <a
