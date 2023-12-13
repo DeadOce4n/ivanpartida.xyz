@@ -166,6 +166,9 @@ importers:
       eslint-config-custom:
         specifier: workspace:^
         version: link:../../packages/eslint-config-custom
+      mkdirp:
+        specifier: ^3.0.1
+        version: 3.0.1
       tsconfig:
         specifier: workspace:^
         version: link:../../packages/tsconfig
@@ -5889,6 +5892,12 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: false
+
+  /mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
 
   /module-error@1.0.2:
     resolution: {integrity: sha512-0yuvsqSCv8LbaOKhnsQ/T5JhyFlCYLPXK3U2sgV10zoKQwzs/MyfuQUOZQ1V/6OCOJsK/TRgNVrPuPDqtdMFtA==}

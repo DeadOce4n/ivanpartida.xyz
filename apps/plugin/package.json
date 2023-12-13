@@ -18,6 +18,7 @@
     "@types/ws": "^8.5.6",
     "esbuild": "^0.19.4",
     "eslint-config-custom": "workspace:^",
+    "mkdirp": "^3.0.1",
     "tsconfig": "workspace:^",
     "typescript": "^5.2.2"
   },
