@@ -4,6 +4,8 @@ import { WebSocket } from 'ws';
 import { encode } from '@msgpack/msgpack';
 import os from 'node:os';
 import path from 'node:path';
+import fs from 'node:fs/promises';
+import { mkdirp } from 'mkdirp';
 
 import { getFileInfo, getRemoteUrl } from './utils.ts';
 
@@ -82,7 +84,61 @@ export class Plugin {
   }
 
   public async onVimEnter() {
-    const uriFromConfig = await this.plugin.nvim.getVar('portfolio_ws_uri');
+    const configPath = path.join(
+      await this.plugin.nvim.callFunction('stdpath', ['cache']),
+      'portfolio',
+    );
+
+    const isDir = await fs
+      .stat(configPath)
+      .then((stat) => stat.isDirectory())
+      .catch(() => false);
+
+    if (!isDir) {
+      await mkdirp(configPath);
+    }
+
+    const configExists = await fs
+      .stat(path.join(configPath, 'config.json'))
+      .then((stat) => stat.isFile())
+      .catch(() => false);
+
+    if (!configExists) {
+      await fs.writeFile(
+        path.join(configPath, 'config.json'),
+        JSON.stringify({}),
+        'utf8',
+      );
+    }
+
+    const rawConfig = await fs.readFile(
+      path.join(configPath, 'config.json'),
+      'utf8',
+    );
+
+    const config = JSON.parse(rawConfig) as {
+      uri?: string;
+      password?: string;
+    }; // dangerous!
+
+    const uri =
+      config.uri ??
+      ((await this.plugin.nvim.callFunction('input', [
+        'Enter the URI of the portfolio server: ',
+      ])) as string);
+
+    const password =
+      config.password ??
+      ((await this.plugin.nvim.callFunction('inputsecret', [
+        'Enter the password for the portfolio server: ',
+      ])) as string);
+
+    await fs.writeFile(
+      path.join(configPath, 'config.json'),
+      JSON.stringify({ uri, password }),
+      'utf8',
+    );
+
     const cwd = await this.plugin.nvim.callFunction('getcwd');
 
     this.cwd = cwd;
@@ -91,10 +147,10 @@ export class Plugin {
     await this.git.cwd(cwd);
 
     if (
-      typeof uriFromConfig === 'string' &&
-      (uriFromConfig.startsWith('ws://') || uriFromConfig.startsWith('wss://'))
+      typeof uri === 'string' &&
+      (uri.startsWith('ws://') || uri.startsWith('wss://'))
     ) {
-      this.wsUri = uriFromConfig;
+      this.wsUri = uri;
     } else {
       await this.plugin.nvim.errWriteLine(
         'g:portfolio_ws_uri should be a valid URI!',
@@ -102,18 +158,14 @@ export class Plugin {
       return;
     }
 
-    const passwordFromConfig = await this.plugin.nvim.getVar(
-      'portfolio_ws_password',
-    );
-
-    if (typeof passwordFromConfig !== 'string') {
+    if (typeof password !== 'string') {
       await this.plugin.nvim.errWriteLine(
         'g:portfolio_ws_password should be a string!',
       );
       return;
     }
 
-    this.password = passwordFromConfig;
+    this.password = password;
     await this.connect();
   }
 
