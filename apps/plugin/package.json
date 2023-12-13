@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
-    "dev": "node build.js --watch",
-    "build": "node build.js",
+    "dev": "node build.mjs --watch",
+    "build": "node build.mjs",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
     "check": "tsc",
     "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""

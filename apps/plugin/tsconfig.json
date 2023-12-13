@@ -8,5 +8,5 @@
     "verbatimModuleSyntax": false,
     "outDir": "dist"
   },
-  "include": ["src", "build.js"]
+  "include": ["src", "build.mjs"]
 }

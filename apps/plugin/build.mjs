@@ -20,6 +20,7 @@ const options = {
   outdir: './dist',
   format: 'cjs',
   logLevel: 'info',
+  minify: true,
 };
 
 if (values.watch) {
