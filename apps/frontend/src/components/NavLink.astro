@@ -28,13 +28,19 @@ export interface Props extends Variant {
   href: string;
   icon: astroHTML.JSX.Element;
   class?: string;
+  ariaLabel: string;
 }
 
-const { href, icon, color, class: className } = Astro.props;
+const { href, icon, color, class: className, ariaLabel } = Astro.props;
 const Icon = icon;
 ---
 
-<a {href} target="_blank" class={cn(variants({ color }), className)}>
+<a
+  {href}
+  aria-label={ariaLabel}
+  target="_blank"
+  class={cn(variants({ color }), className)}
+>
   {
     (
       <span>

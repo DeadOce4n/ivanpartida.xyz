@@ -54,6 +54,7 @@
     className,
   )}
   disabled={loading}
+  aria-label="Toggle light mode"
 >
   {#if light}<Sun />{:else}<Moon />{/if}
 </button>

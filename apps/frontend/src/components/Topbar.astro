@@ -20,17 +20,28 @@ import DarkModeToggle from './DarkModeToggle.svelte';
     />
   </a>
   <div class="flex flex-row items-center gap-2">
-    <NavLink href="https://gitlab.com/DeadOcean" icon={GitLab} color="orange" />
+    <NavLink
+      href="https://gitlab.com/DeadOcean"
+      icon={GitLab}
+      color="orange"
+      ariaLabel="GitLab profile"
+    />
     <NavLink
       href="https://www.linkedin.com/in/ivanpartidagalarza/"
       icon={LinkedIn}
       color="blue"
+      ariaLabel="LinkedIn profile"
     />
-    <NavLink href="https://x.com/@DeadOce4n" icon={TwitterX} />
+    <NavLink
+      href="https://x.com/@DeadOce4n"
+      icon={TwitterX}
+      ariaLabel="Twitter profile"
+    />
     <NavLink
       href="https://www.instagram.com/_solianir/"
       icon={Instagram}
       class="text-lg"
+      ariaLabel="Instagram profile"
     />
   </div>
   <DarkModeToggle class="ml-auto" client:load />
