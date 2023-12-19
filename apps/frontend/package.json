@@ -31,6 +31,7 @@
     "astro-seo": "^0.8.0",
     "autoprefixer": "^10.4.16",
     "class-variance-authority": "^0.7.0",
+    "classix": "^2.1.35",
     "eslint-config-custom": "workspace:^",
     "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",

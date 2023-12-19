@@ -6,7 +6,7 @@
   import FolderFill from 'icons:svelte/mingcute/folder-2-fill';
   import Sleep from 'icons:svelte/mingcute/sleep-fill';
 
-  import { icons } from './icons';
+  import Icon from './Icon.svelte';
 
   let socket: WebSocket;
   let timer: ReturnType<typeof setInterval> | null;
@@ -52,22 +52,22 @@
     }
   });
 
-  $: icon = icons[file?.filetype ?? 'default']?.icon ?? icons.default.icon;
-  $: iconColorClass =
-    icons[file?.filetype ?? 'default']?.colorClass ?? icons.default.colorClass;
+  $: icon = file?.filetype ?? 'default';
 </script>
 
-<div class="bg-gray rounded-xl p-6 shadow-md">
+<div class="dark:bg-gray-invert bg-gray rounded-xl p-6 shadow-md">
   <div class="inline-flex w-full flex-row justify-between">
     <h3 class="!mt-0 inline-flex w-full flex-row justify-between">
       Currently editing
-      <span class="flex flex-row items-center gap-2 self-end text-white">
+      <span
+        class="dark:text-white-invert flex flex-row items-center gap-2 self-end text-white"
+      >
         {#if file}
           <span class="text-xs">Live</span>
-          <Radar class="text-green" />
+          <Radar class="dark:text-green-invert text-green" />
         {:else}
           <span class="text-xs">Offline</span>
-          <Sleep class="text-blue ml-auto" />
+          <Sleep class="dark:text-blue-invert text-blue ml-auto" />
         {/if}
       </span>
     </h3>
@@ -77,7 +77,7 @@
       <div class="flex flex-col gap-2">
         <div class="flex flex-row items-center gap-2">
           {#if file.isRepo}
-            <Git class="text-red" />
+            <Git class="dark:text-red-invert text-red" />
           {:else}
             <FolderFill />
           {/if}
@@ -91,6 +91,7 @@
         </div>
         <div
           class="
+          dark:before:from-gray-invert
           before:from-gray
           relative
           flex
@@ -109,7 +110,7 @@
           before:content-['']
           "
         >
-          <svelte:component this={icon} class={iconColorClass} />
+          <Icon filetype={icon} />
           <div
             class="scrollbar-hide w-full overflow-x-scroll hover:overflow-x-scroll md:overflow-x-hidden"
           >

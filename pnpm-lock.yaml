@@ -93,6 +93,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
+      classix:
+        specifier: ^2.1.35
+        version: 2.1.35
       eslint-config-custom:
         specifier: workspace:^
         version: link:../../packages/eslint-config-custom
@@ -2993,6 +2996,10 @@ packages:
       napi-macros: 2.2.2
       node-gyp-build: 4.6.1
     dev: false
+
+  /classix@2.1.35:
+    resolution: {integrity: sha512-YRI5UjBq9Aspfnj6ZyCobyeye3EDAanCpBWqXhNH9bVloKC6Ejnz+K4pWu/qMSaJRJEtLgmfvkIRk5zbQqj2PA==}
+    dev: true
 
   /cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}

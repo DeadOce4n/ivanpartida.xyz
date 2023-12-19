@@ -4,14 +4,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 const variants = cva('inline-flex items-start px-1 gap-1 text-sm', {
   variants: {
     color: {
-      normal: 'text-white',
-      red: 'text-red',
-      orange: 'text-orange',
-      yellow: 'text-yellow',
-      green: 'text-green',
-      blue: 'text-blue',
-      purple: 'text-purple',
-      pink: 'text-pink',
+      normal: 'dark:text-white-invert text-white',
+      red: 'dark:text-red-invert text-red',
+      orange: 'dark:text-orange-invert text-orange',
+      yellow: 'text-yellow dark:text-yellow-invert',
+      green: 'text-green dark:text-green-invert',
+      blue: 'text-blue dark:text-blue-invert',
+      purple: 'text-purple dark:text-purple-invert',
+      pink: 'text-pink dark:text-pink-invert',
     },
   },
   defaultVariants: {

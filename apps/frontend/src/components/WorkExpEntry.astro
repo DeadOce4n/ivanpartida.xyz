@@ -10,12 +10,18 @@ export interface Props {
 const { employer, jobTitle, period } = Astro.props;
 ---
 
-<div class="border-l-blue flex flex-col items-start border-l-[3px]">
+<div
+  class="dark:border-l-blue-invert border-l-blue flex flex-col items-start border-l-[3px]"
+>
   <div class="-mt-4 flex flex-row items-center gap-4">
-    <RoundFill class="text-blue -ml-[11px]" />
-    <span class="text-purple text-xl font-bold">{employer}</span>
+    <RoundFill class="dark:text-blue-invert text-blue -ml-[11px]" />
+    <span class="dark:text-purple-invert text-purple text-xl font-bold"
+      >{employer}</span
+    >
   </div>
   <span class="ml-6 italic">{jobTitle}</span>
-  <span class="text-white-dark ml-6 text-sm">{period}</span>
+  <span class="dark:text-white-dark-invert text-white-dark ml-6 text-sm"
+    >{period}</span
+  >
   <slot />
 </div>

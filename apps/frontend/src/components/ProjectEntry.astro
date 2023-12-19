@@ -17,7 +17,9 @@ const { name, stack, link, image } = Astro.props;
 ---
 
 <li class="pl-0">
-  <div class="bg-gray flex flex-col rounded-xl sm:flex-row">
+  <div
+    class="dark:bg-gray-invert bg-gray flex flex-col rounded-xl shadow-md sm:flex-row"
+  >
     {
       image && (
         <Image
@@ -26,15 +28,17 @@ const { name, stack, link, image } = Astro.props;
         />
       )
     }
-    <div class="flex w-full flex-col gap-4 p-4 shadow-md sm:p-6 md:gap-4">
+    <div class="flex w-full flex-col gap-4 p-4 sm:p-6 md:gap-4">
       <div class="flex w-full flex-row items-center justify-between">
-        <span class="text-purple text-xl font-black">{name}</span>
+        <span class="dark:text-purple-invert text-purple text-xl font-black"
+          >{name}</span
+        >
         {
           link ? (
             <a
               href={link}
               target="_blank"
-              class="bg-gray-light hover:bg-gray-lighter flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
+              class="dark:bg-gray-light-invert bg-gray-light dark:hover:bg-gray-lighter-invert dark:text-white-dark-invert flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
             >
               <span class="text-base">
                 <ExternalLinkFill />
@@ -42,8 +46,8 @@ const { name, stack, link, image } = Astro.props;
               <span>Source code</span>
             </a>
           ) : (
-            <span class="flew-row text-yellow flex items-center gap-1 text-xs">
-              <span>WIP</span>
+            <span class="flew-row dark:text-yellow-invert text-yellow flex items-center gap-1 text-xs">
+              <span class="font-black">WIP</span>
               <span class="text-base">
                 <Tool />
               </span>

@@ -20,7 +20,7 @@ import Zod from 'icons:astro/simple-icons/zod';
 import AstroIcon from 'icons:astro/simple-icons/astro';
 import Git from 'icons:astro/simple-icons/git';
 import Pnpm from 'icons:astro/simple-icons/pnpm';
-import Turborepo from 'icons:astro/logos/turborepo-icon';
+import Turborepo from 'icons:astro/simple-icons/turborepo';
 import Linux from 'icons:astro/simple-icons/linux';
 import S3 from 'icons:astro/simple-icons/amazons3';
 import Express from 'icons:astro/simple-icons/express';
@@ -121,14 +121,14 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
     <section>
       <h1 class="not-prose mb-2">
         <span
-          class="from-purple to-pink bg-gradient-to-r bg-clip-text text-transparent"
+          class="dark:from-purple-invert from-purple dark:to-pink-invert to-pink bg-gradient-to-r bg-clip-text text-transparent"
         >
           Hi, I'm Ivan Partida
         </span>
         <span class="animate-wiggle inline-block">👋</span>
       </h1>
       <span
-        class="text-white-dark mb-4 inline-flex items-center gap-1 font-bold"
+        class="dark:text-white-dark-invert text-white-dark mb-4 inline-flex items-center gap-1 font-bold"
       >
         Full-Stack Engineer and DevOps enthusiast
       </span>
@@ -217,7 +217,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         <a
           href={cv}
           target="_blank"
-          class="bg-purple text-gray-dark hover:bg-purple-light flex items-center gap-2 rounded-lg px-4 py-2 shadow-md transition-colors"
+          class="dark:bg-purple-invert bg-purple dark:text-gray-dark-invert text-gray-dark hover:bg-purple-light dark:hover:bg-purple-light-invert flex items-center gap-2 rounded-lg px-4 py-2 shadow-md transition-colors"
         >
           <span><Download /></span>
           <span>Download my resume</span>
@@ -411,7 +411,6 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
               content: 'Turborepo',
               icon: Turborepo,
               color: 'normal',
-              class: '[&>span>svg>*:last-child]:fill-white',
             },
             { content: 'ESBuild', icon: ESBuild, color: 'yellow' },
             { content: 'Docker', icon: Docker, color: 'blue' },

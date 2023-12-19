@@ -7,9 +7,10 @@ import Instagram from 'icons:astro/skill-icons/instagram';
 
 import profilePicture from '@/assets/img/profile.webp';
 import NavLink from '@/components/NavLink.astro';
+import DarkModeToggle from './DarkModeToggle.svelte';
 ---
 
-<nav class="flex flex-row items-center gap-4">
+<nav class="flex flex-row items-center gap-4 md:pt-4">
   <a href="/">
     <Image
       src={profilePicture}
@@ -18,16 +19,12 @@ import NavLink from '@/components/NavLink.astro';
       width={256}
     />
   </a>
-  <div class="ml-auto flex flex-row items-center gap-2">
-    <NavLink
-      href="https://gitlab.com/DeadOcean"
-      icon={GitLab}
-      class="text-orange"
-    />
+  <div class="flex flex-row items-center gap-2">
+    <NavLink href="https://gitlab.com/DeadOcean" icon={GitLab} color="orange" />
     <NavLink
       href="https://www.linkedin.com/in/ivanpartidagalarza/"
       icon={LinkedIn}
-      class="text-blue"
+      color="blue"
     />
     <NavLink href="https://x.com/@DeadOce4n" icon={TwitterX} />
     <NavLink
@@ -36,4 +33,5 @@ import NavLink from '@/components/NavLink.astro';
       class="text-lg"
     />
   </div>
+  <DarkModeToggle class="ml-auto" client:load />
 </nav>

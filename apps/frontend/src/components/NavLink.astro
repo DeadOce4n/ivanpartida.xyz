@@ -1,23 +1,44 @@
 ---
-type Props = {
+import { cn } from '@/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+const variants = cva(
+  'flex items-center justify-center gap-2 rounded-full p-2 transition-colors dark:hover:bg-white-invert hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10',
+  {
+    variants: {
+      color: {
+        normal: 'text-white dark:text-white-invert',
+        orange: 'text-orange dark:text-orange-invert',
+        yellow: 'text-yellow dark:text-yellow-invert',
+        green: 'text-green dark:text-green-invert',
+        blue: 'text-blue dark:text-blue-invert',
+        purple: 'text-purple dark:text-purple-invert',
+        pink: 'text-pink dark:text-pink-invert',
+      },
+    },
+    defaultVariants: {
+      color: 'normal',
+    },
+  },
+);
+
+type Variant = VariantProps<typeof variants>;
+
+export interface Props extends Variant {
   href: string;
   icon: astroHTML.JSX.Element;
   class?: string;
-};
+}
 
-const { href, icon, class: className } = Astro.props;
+const { href, icon, color, class: className } = Astro.props;
 const Icon = icon;
 ---
 
-<a
-  {href}
-  target="_blank"
-  class="hover:bg-gray-lighter active:bg-gray-light flex items-center justify-center gap-2 rounded-lg p-2 transition-colors"
->
+<a {href} target="_blank" class={cn(variants({ color }), className)}>
   {
     (
       <span>
-        <Icon class={className} />
+        <Icon />
       </span>
     )
   }
