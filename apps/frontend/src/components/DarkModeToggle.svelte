@@ -55,5 +55,5 @@
   )}
   disabled={loading}
 >
-  {#if light}<Moon />{:else}<Sun />{/if}
+  {#if light}<Sun />{:else}<Moon />{/if}
 </button>
