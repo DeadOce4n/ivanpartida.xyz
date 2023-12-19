@@ -55,7 +55,9 @@
   $: icon = file?.filetype ?? 'default';
 </script>
 
-<div class="dark:bg-gray-invert bg-gray rounded-xl p-6 shadow-md">
+<div
+  class="dark:bg-gray-invert bg-gray rounded-xl p-6 shadow-md transition-colors"
+>
   <div class="inline-flex w-full flex-row justify-between">
     <h3 class="!mt-0 inline-flex w-full flex-row justify-between">
       Currently editing
