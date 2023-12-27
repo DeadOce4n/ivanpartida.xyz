@@ -38,7 +38,6 @@ export default {
       },
       fontFamily: {
         sans: ['DM Sans Variable', ...defaultTheme.fontFamily.sans],
-        mono: ['IBM Plex Mono', ...defaultTheme.fontFamily.mono],
       },
       typography: ({
         theme,
