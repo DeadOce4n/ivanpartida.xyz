@@ -38,6 +38,7 @@ export default {
       },
       fontFamily: {
         sans: ['DM Sans Variable', ...defaultTheme.fontFamily.sans],
+        headings: ['Outfit Variable', ...defaultTheme.fontFamily.sans],
       },
       typography: ({
         theme,

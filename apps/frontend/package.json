@@ -23,6 +23,7 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@fontsource-variable/dm-sans": "^5.0.3",
+    "@fontsource-variable/outfit": "^5.0.8",
     "@iconify-json/logos": "^1.1.37",
     "@iconify-json/mingcute": "^1.1.10",
     "@iconify-json/simple-icons": "^1.1.72",
