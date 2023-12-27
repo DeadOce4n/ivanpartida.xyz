@@ -18,7 +18,7 @@ const { name, stack, link, image } = Astro.props;
 
 <li class="pl-0">
   <div
-    class="dark:bg-gray-invert bg-gray flex flex-col rounded-xl shadow-md sm:flex-row"
+    class="border-gray-light dark:border-gray-light-invert flex flex-col rounded-xl border shadow-sm sm:flex-row"
   >
     {
       image && (
@@ -38,7 +38,7 @@ const { name, stack, link, image } = Astro.props;
             <a
               href={link}
               target="_blank"
-              class="dark:bg-gray-light-invert bg-gray-light dark:hover:bg-gray-lighter-invert dark:text-white-dark-invert flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
+              class="dark:bg-gray-invert hover:bg-gray-light bg-gray dark:hover:bg-gray-light-invert dark:text-white-dark-invert flex flex-row items-center gap-1 rounded-lg px-3 py-2 text-xs text-white decoration-transparent transition-colors"
             >
               <span class="text-base">
                 <ExternalLinkFill />

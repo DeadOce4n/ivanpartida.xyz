@@ -56,10 +56,10 @@
 </script>
 
 <div
-  class="dark:bg-gray-invert bg-gray rounded-xl p-6 shadow-md transition-colors"
+  class="border-gray-light dark:border-gray-light-invert rounded-xl border p-6 shadow-sm transition-colors"
 >
   <div class="inline-flex w-full flex-row justify-between">
-    <h3 class="!mt-0 inline-flex w-full flex-row justify-between">
+    <h2 class="!mt-0 inline-flex w-full flex-row justify-between">
       Currently editing
       <span
         class="dark:text-white-invert flex flex-row items-center gap-2 self-end text-white"
@@ -72,7 +72,7 @@
           <Sleep class="dark:text-blue-invert text-blue ml-auto" />
         {/if}
       </span>
-    </h3>
+    </h2>
   </div>
   <div class="flex w-full flex-col gap-4 rounded-xl" id="currently-editing">
     {#if file}
