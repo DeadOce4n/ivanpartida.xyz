@@ -11,7 +11,7 @@ export default {
         'blue-invert': '#2F549D',
         purple: '#A67DE8',
         'purple-invert': '#664794',
-        'purple-light': '#9E81D8',
+        'purple-light': '#BB9BEE',
         'purple-light-invert': '#7D5FAB',
         pink: '#D27E99',
         'pink-invert': '#A63A69',
