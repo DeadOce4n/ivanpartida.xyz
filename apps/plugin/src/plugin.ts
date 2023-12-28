@@ -7,7 +7,7 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import { mkdirp } from 'mkdirp';
 
-import { getFileInfo, getRemoteUrl } from './utils.ts';
+import { fileExists, getFileInfo, getRemoteUrl } from './utils.ts';
 
 const MAX_CONNECT_RETRIES = 10;
 
@@ -89,19 +89,15 @@ export class Plugin {
       'portfolio',
     );
 
-    const isDir = await fs
-      .stat(configPath)
-      .then((stat) => stat.isDirectory())
-      .catch(() => false);
+    const isDir = await fileExists({ path: configPath, directory: true });
 
     if (!isDir) {
       await mkdirp(configPath);
     }
 
-    const configExists = await fs
-      .stat(path.join(configPath, 'config.json'))
-      .then((stat) => stat.isFile())
-      .catch(() => false);
+    const configExists = await fileExists({
+      path: path.join(configPath, 'config.json'),
+    });
 
     if (!configExists) {
       await fs.writeFile(

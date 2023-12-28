@@ -1,6 +1,7 @@
 import type { Buffer } from 'neovim';
 import path from 'node:path';
 import type { SimpleGit } from 'simple-git';
+import fs from 'node:fs/promises';
 
 export const getRemoteUrl = async (git: SimpleGit) => {
   const maybeRemoteUrl = await git
@@ -51,3 +52,17 @@ export const getFileInfo = async (buffer: Buffer, cwd: string) => {
 
   return { filename, filetype };
 };
+
+type FileExistsParams = {
+  path: string;
+  directory?: boolean;
+};
+
+export const fileExists = async ({
+  path,
+  directory = false,
+}: FileExistsParams) =>
+  fs
+    .stat(path)
+    .then((stat) => (directory ? stat.isDirectory() : stat.isFile()))
+    .catch(() => false);
