@@ -2,13 +2,11 @@
 import { Image } from 'astro:assets';
 import ExternalLinkFill from 'icons:astro/mingcute/code-fill';
 import Tool from 'icons:astro/mingcute/tool-fill';
-import TechBadge, {
-  type Props as TechBadgeProps,
-} from '@/components/TechBadge.astro';
+import Badge, { type Props as BadgeProps } from '@/components/Badge.astro';
 
 type Props = {
   name: string;
-  stack: TechBadgeProps[];
+  stack: (BadgeProps & { content: string; icon: typeof Tool })[];
   link?: string;
   image?: Parameters<typeof Image>[0] & astroHTML.JSX.IntrinsicAttributes;
 };
@@ -58,7 +56,17 @@ const { name, stack, link, image } = Astro.props;
       </div>
       <span class="mb-2 md:mb-1"><slot /></span>
       <div class="flex flex-row flex-wrap gap-2">
-        {stack.map((s) => <TechBadge {...s} />)}
+        {
+          stack.map(({ icon, content, ...props }) => {
+            const Icon = icon;
+            return (
+              <Badge {...props}>
+                <Icon slot="left" />
+                <Fragment slot="text">{content}</Fragment>
+              </Badge>
+            );
+          })
+        }
       </div>
     </div>
   </div>

@@ -36,16 +36,14 @@ const variants = cva(
 type Variant = VariantProps<typeof variants>;
 
 export interface Props extends Variant {
-  content: string;
-  icon: astroHTML.JSX.Element;
   class?: string;
 }
 
-const { content, icon, color, size, class: className } = Astro.props;
-const Icon = icon;
+const { color, size, class: className } = Astro.props;
 ---
 
 <div class={twMerge(variants({ color, size }), className)}>
-  <span><Icon /></span>
-  <span class="font-bold">{content}</span>
+  <slot name="left" />
+  <span class="font-bold"><slot name="text" /></span>
+  <slot name="right" />
 </div>

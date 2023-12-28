@@ -51,9 +51,7 @@ import { SEO } from 'astro-seo';
 import Layout from '@/layouts/Layout.astro';
 import InlineWithIcon from '@/components/InlineWithIcon.astro';
 import ProjectEntry from '@/components/ProjectEntry.astro';
-import TechBadge, {
-  type Props as TechBadgeProps,
-} from '@/components/TechBadge.astro';
+import Badge, { type Props as BadgeProps } from '@/components/Badge.astro';
 import BaseHead from '@/components/BaseHead.astro';
 import WorkExpEntry from '@/components/WorkExpEntry.astro';
 import CurrentlyEditing from '@/components/CurrentlyEditing/CurrentlyEditing.svelte';
@@ -61,7 +59,7 @@ import cv from '@/assets/doc/cv.pdf';
 import suprachat from '@/assets/img/suprachat.webp';
 import monglue from '@/assets/img/monglue.webp';
 
-const allTechs: TechBadgeProps[] = [
+const allTechs: (BadgeProps & { content: string; icon: typeof Linux })[] = [
   { content: 'Linux', icon: Linux },
   { content: 'Git', icon: Git, color: 'red' },
   { content: 'Bash', icon: Bash },
@@ -457,7 +455,17 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
         them:
       </p>
       <div class="flex-column flex flex-wrap gap-3">
-        {allTechs.map((props) => <TechBadge {...props} size="lg" />)}
+        {
+          allTechs.map(({ icon, content, ...props }) => {
+            const Icon = icon;
+            return (
+              <Badge {...props} size="lg">
+                <Icon slot="left" class="text-base" />
+                <Fragment slot="text">{content}</Fragment>
+              </Badge>
+            );
+          })
+        }
       </div>
       <p>
         As you can see, I'm most comfortable working with the <InlineWithIcon
