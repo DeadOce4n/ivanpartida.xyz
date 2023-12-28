@@ -9,6 +9,14 @@ export default async function (p: NvimPlugin) {
   p.registerAutocmd('VimLeave', () => plugin.onVimLeave(), { pattern: '*' });
   p.registerCommand('WSConnect', () => plugin.connect(), { sync: false });
   p.registerCommand('WSDisconnect', () => plugin.disconnect(), { sync: false });
+  p.registerCommand(
+    'WSReconnect',
+    async () => {
+      await plugin.disconnect();
+      await plugin.connect();
+    },
+    { sync: false },
+  );
   p.registerCommand('WSSend', (args: string[]) => plugin.send(args), {
     sync: false,
     nargs: '1',
