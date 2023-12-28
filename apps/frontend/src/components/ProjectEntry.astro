@@ -62,7 +62,7 @@ const { name, stack, link, image } = Astro.props;
             return (
               <Badge {...props}>
                 <Icon slot="left" />
-                <Fragment slot="text">{content}</Fragment>
+                {content}
               </Badge>
             );
           })

@@ -44,6 +44,6 @@ const { color, size, class: className } = Astro.props;
 
 <div class={twMerge(variants({ color, size }), className)}>
   <slot name="left" />
-  <span class="font-bold"><slot name="text" /></span>
+  <span class="font-bold"><slot /></span>
   <slot name="right" />
 </div>
