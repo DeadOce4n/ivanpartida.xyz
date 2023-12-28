@@ -58,6 +58,7 @@ import CurrentlyEditing from '@/components/CurrentlyEditing/CurrentlyEditing.sve
 import cv from '@/assets/doc/cv.pdf';
 import suprachat from '@/assets/img/suprachat.webp';
 import monglue from '@/assets/img/monglue.webp';
+import EducationEntry from '@/components/EducationEntry.astro';
 
 const allTechs: (BadgeProps & { content: string; icon: typeof Linux })[] = [
   { content: 'Linux', icon: Linux },
@@ -479,6 +480,15 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           color="yellow"
         /> ecosystem; as chaotic as it is, I think that's part of the fun!
       </p>
+    </section>
+    <section>
+      <h2>Education</h2>
+      <EducationEntry
+        institution="Universidad Autónoma de Baja California"
+        degree="B. Eng. in Electronics"
+        location="Ensenada, Baja California, Mexico"
+        timespan="2015 - 2020"
+      />
     </section>
     <section>
       <h2>Why you should hire me</h2>
