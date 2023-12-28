@@ -34,7 +34,7 @@ import Prisma from 'icons:astro/simple-icons/prisma';
 import GitHub from 'icons:astro/simple-icons/github';
 import ReactQuery from 'icons:astro/simple-icons/reactquery';
 import Npm from 'icons:astro/simple-icons/npm';
-import Download from 'icons:astro/mingcute/download-3-fill';
+import Download from 'icons:astro/mingcute/file-download-fill';
 import EKS from 'icons:astro/simple-icons/amazoneks';
 import K3s from 'icons:astro/simple-icons/k3s';
 import Flask from 'icons:astro/simple-icons/flask';
@@ -217,7 +217,7 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           </ul>
         </WorkExpEntry>
       </div>
-      <div class="not-prose grid place-items-center md:w-fit">
+      <div class="not-prose grid place-items-center sm:w-fit">
         <a
           href={cv}
           target="_blank"
@@ -228,16 +228,19 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
           hover:bg-purple-light
           dark:hover:bg-purple-light-invert
           flex
+          w-full
           items-center
+          justify-center
           gap-2
           rounded-lg
           px-4
           py-2
           shadow-md
-          transition-colors"
+          transition-colors
+          sm:w-max"
         >
-          <span><Download /></span>
-          <span>Download my resume</span>
+          <Download />
+          <span class="font-headings font-semibold">Download my resume</span>
         </a>
       </div>
     </section>
