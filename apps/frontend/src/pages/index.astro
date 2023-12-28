@@ -118,24 +118,26 @@ const ogImage = 'https://ivanpartida.xyz/og.webp';
   </head>
   <Layout>
     <section>
-      <h1 class="not-prose mb-2">
+      <h1 class="not-prose mb-4">
         <span
           class="dark:from-purple-invert from-purple dark:to-pink-invert to-pink bg-gradient-to-r bg-clip-text text-transparent"
         >
-          Hi, I'm Ivan Partida
+          Hi,<br />I'm Ivan Partida
         </span>
         <span class="animate-wiggle inline-block">👋</span>
       </h1>
-      <span
-        class="dark:text-white-dark-invert text-white-dark inline-flex items-center gap-1 font-bold"
-      >
-        Full-Stack Engineer and DevOps enthusiast
-      </span>
-      <span
-        class="text-white-dark dark:text-white-dark-invert flex items-center gap-2"
-      >
-        <Globe />Ensenada, Baja California, México
-      </span>
+      <div class="not-prose flex flex-col gap-1">
+        <span
+          class="dark:text-white-dark-invert text-white-dark flex items-center gap-2 text-base font-bold sm:text-lg"
+        >
+          Full-Stack Engineer, DevOps enthusiast
+        </span>
+        <span
+          class="text-white-dark dark:text-white-dark-invert flex items-center gap-2 text-base sm:text-lg"
+        >
+          <Globe />Ensenada, Baja California, México
+        </span>
+      </div>
       <p>
         I love all things web-dev related: frontend development with <InlineWithIcon
           icon={React}
