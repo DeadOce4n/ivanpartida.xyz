@@ -93,8 +93,8 @@
         </div>
         <div
           class="
-          dark:before:from-gray-invert
-          before:from-gray
+          dark:before:from-gray-dark-invert
+          before:from-gray-dark
           relative
           flex
           w-full
