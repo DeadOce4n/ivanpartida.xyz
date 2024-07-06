@@ -26,6 +26,8 @@ const messageSchema = z.object({
 
 await db.open();
 
+let activeConnections = 0;
+
 app
   .ws<User>('/*', {
     open: (ws) => {
@@ -33,6 +35,12 @@ app
         `New connection: | ${arrayBufferToString(ws.getRemoteAddressAsText())}`,
       );
       ws.subscribe('to_frontend');
+      activeConnections += 1;
+      logger.debug(activeConnections);
+    },
+    close: () => {
+      activeConnections -= 1;
+      logger.debug(activeConnections);
     },
     message: (ws, message) => {
       const userData = ws.getUserData();
