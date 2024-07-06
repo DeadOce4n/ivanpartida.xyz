@@ -20,11 +20,16 @@ const { values } = parseArgs({
 
 const { hostname, password } = values;
 
-if (!password) {
-  throw new Error('2 arguments required!');
+try {
+  if (!password) {
+    throw new Error('Password is required');
+  }
+
+  await db.open();
+  await db.put(hostname!, await argon2.hash(password));
+
+  console.log('Hostname and password saved to db');
+} catch (e) {
+  console.error(e);
+  process.exit(1);
 }
-
-await db.open();
-await db.put(hostname!, await argon2.hash(password));
-
-console.log('Hostname and password saved to db');
