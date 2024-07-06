@@ -3,23 +3,23 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
 const variants = cva(
-  'flex flex-row rounded-full items-center gap-2 dark:bg-opacity-10 bg-opacity-10',
+  'flex flex-row rounded-full items-center gap-2 bg-opacity-10',
   {
     variants: {
       color: {
         normal:
-          'dark:text-white-dark-invert text-white dark:bg-white-dark-invert bg-white',
-        red: 'dark:text-red-invert text-red dark:bg-red-invert bg-red',
+          'dark:text-gray-dark-invert text-white dark:bg-white-dark-invert bg-white',
+        red: 'dark:text-gray-dark-invert text-red dark:bg-red-invert bg-red',
         orange:
-          'dark:text-orange-invert text-orange dark:bg-orange-invert bg-orange',
+          'dark:text-gray-dark-invert text-orange dark:bg-orange-invert bg-orange',
         yellow:
-          'dark:text-yellow-invert text-yellow dark:bg-yellow-invert bg-yellow',
+          'dark:text-gray-dark-invert text-yellow dark:bg-yellow-invert bg-yellow',
         green:
-          'dark:text-green-invert text-green dark:bg-green-invert bg-green',
-        blue: 'dark:text-blue-invert text-blue dark:bg-blue-invert bg-blue',
+          'dark:text-gray-dark-invert text-green dark:bg-green-invert bg-green',
+        blue: 'dark:text-gray-dark-invert text-blue dark:bg-blue-invert bg-blue',
         purple:
-          'dark:text-purple-invert text-purple dark:bg-purple-invert bg-purple',
-        pink: 'dark:text-pink-invert text-pink dark:bg-pink-invert bg-pink',
+          'dark:text-gray-dark-invert text-purple dark:bg-purple-invert bg-purple',
+        pink: 'dark:text-gray-dark-invert text-pink dark:bg-pink-invert bg-pink',
       },
       size: {
         base: 'text-xs px-3 py-2',
