@@ -1,10 +1,10 @@
+import os from 'node:os';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import type { NvimPlugin } from 'neovim';
 import { simpleGit, type SimpleGit } from 'simple-git';
 import { WebSocket } from 'ws';
 import { encode } from '@msgpack/msgpack';
-import os from 'node:os';
-import path from 'node:path';
-import fs from 'node:fs/promises';
 import { mkdirp } from 'mkdirp';
 
 import { fileExists, getFileInfo, getRemoteUrl } from './utils.ts';
@@ -53,9 +53,12 @@ export class Plugin {
           })
           .on('close', () => {
             if (!this.timer) {
-              this.timer = setInterval(() => {
+              this.timer = setInterval(async () => {
                 if (this.retries < MAX_CONNECT_RETRIES) {
                   this.retries++;
+                  await this.plugin.nvim.outWriteLine(
+                    `Retries: ${this.retries}`,
+                  );
                   this.connect();
                 } else if (this.timer) {
                   clearInterval(this.timer);
@@ -83,12 +86,67 @@ export class Plugin {
     }
   }
 
-  public async onVimEnter() {
+  public async reconnect() {
+    await this.disconnect();
+    await this.connect();
+  }
+
+  private async getConfigPath() {
     const configPath = path.join(
       await this.plugin.nvim.callFunction('stdpath', ['cache']),
       'portfolio',
     );
 
+    return configPath;
+  }
+
+  private async getConfig(configPath: string) {
+    const rawConfig = await fs.readFile(
+      path.join(configPath, 'config.json'),
+      'utf8',
+    );
+
+    const config = JSON.parse(rawConfig) as {
+      uri: string;
+      password: string;
+    }; // dangerous!
+
+    return config;
+  }
+
+  private async setConfig(
+    configPath: string,
+    config: { uri: string; password: string },
+  ) {
+    this.wsUri = config.uri;
+    this.password = config.password;
+    await fs.writeFile(
+      path.join(configPath, 'config.json'),
+      JSON.stringify(config),
+      'utf8',
+    );
+  }
+
+  public async configure() {
+    const configPath = await this.getConfigPath();
+    const config = await this.getConfig(configPath);
+
+    const newUri = (await this.plugin.nvim.callFunction('input', [
+      'Enter the new URI ([Enter] to keep the previous one): ',
+    ])) as string;
+
+    const newPassword = (await this.plugin.nvim.callFunction('inputsecret', [
+      'Enter the new password ([Enter] to keep the previous one): ',
+    ])) as string;
+
+    await this.setConfig(configPath, {
+      uri: newUri === '' ? config.uri : newUri,
+      password: newPassword === '' ? config.password : newPassword,
+    });
+  }
+
+  public async onVimEnter() {
+    const configPath = await this.getConfigPath();
     const isDir = await fileExists({ path: configPath, directory: true });
 
     if (!isDir) {
@@ -100,40 +158,24 @@ export class Plugin {
     });
 
     if (!configExists) {
-      await fs.writeFile(
-        path.join(configPath, 'config.json'),
-        JSON.stringify({}),
-        'utf8',
-      );
+      await this.setConfig(configPath, { uri: '', password: '' });
     }
 
-    const rawConfig = await fs.readFile(
-      path.join(configPath, 'config.json'),
-      'utf8',
-    );
-
-    const config = JSON.parse(rawConfig) as {
-      uri?: string;
-      password?: string;
-    }; // dangerous!
+    const config = await this.getConfig(configPath);
 
     const uri =
-      config.uri ??
+      config.uri ||
       ((await this.plugin.nvim.callFunction('input', [
         'Enter the URI of the portfolio server: ',
       ])) as string);
 
     const password =
-      config.password ??
+      config.password ||
       ((await this.plugin.nvim.callFunction('inputsecret', [
         'Enter the password for the portfolio server: ',
       ])) as string);
 
-    await fs.writeFile(
-      path.join(configPath, 'config.json'),
-      JSON.stringify({ uri, password }),
-      'utf8',
-    );
+    await this.setConfig(configPath, { uri, password });
 
     const cwd = await this.plugin.nvim.callFunction('getcwd');
 

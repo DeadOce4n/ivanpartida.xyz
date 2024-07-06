@@ -8,7 +8,9 @@
     "build": "node build.mjs",
     "lint": "eslint --fix \"./src/**/*.ts\" && prettier -w --ignore-unknown \"./src/**/*\"",
     "check": "tsc",
-    "affected": "echo \"is-affected:$(jq -r '.name' package.json)\""
+    "affected": "echo \"is-affected:$(jq -r '.name' package.json)\"",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +22,9 @@
     "eslint-config-custom": "workspace:^",
     "mkdirp": "^3.0.1",
     "tsconfig": "workspace:^",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.0"
   },
   "dependencies": {
     "@msgpack/msgpack": "3.0.0-beta2",

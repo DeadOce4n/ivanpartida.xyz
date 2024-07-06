@@ -7,24 +7,28 @@ export default async function (p: NvimPlugin) {
 
   p.registerAutocmd('VimEnter', () => plugin.onVimEnter(), { pattern: '*' });
   p.registerAutocmd('VimLeave', () => plugin.onVimLeave(), { pattern: '*' });
-  p.registerCommand('WSConnect', () => plugin.connect(), { sync: false });
-  p.registerCommand('WSDisconnect', () => plugin.disconnect(), { sync: false });
-  p.registerCommand(
-    'WSReconnect',
-    async () => {
-      await plugin.disconnect();
-      await plugin.connect();
-    },
-    { sync: false },
-  );
-  p.registerCommand('WSSend', (args: string[]) => plugin.send(args), {
-    sync: false,
-    nargs: '1',
-  });
   p.registerAutocmd('DirChanged', () => plugin.onDirChanged(), {
     pattern: '*',
   });
   p.registerAutocmd('BufEnter', () => plugin.onBufEnter(), { pattern: '*' });
+
+  p.registerCommand('WSConnect', () => plugin.connect(), { sync: false });
+  p.registerCommand('WSDisconnect', () => plugin.disconnect(), { sync: false });
+  p.registerCommand('WSReconnect', () => plugin.reconnect(), { sync: false });
+  p.registerCommand('WSSend', (args: [string]) => plugin.send(args), {
+    sync: false,
+    nargs: '1',
+  });
+  p.registerCommand(
+    'WSConfigure',
+    async () => {
+      await plugin.configure();
+      await plugin.reconnect();
+    },
+    {
+      sync: false,
+    },
+  );
 
   plugin = new Plugin(p);
 }

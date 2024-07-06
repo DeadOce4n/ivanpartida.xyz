@@ -15,7 +15,7 @@ const options = {
   entryPoints: ['src/index.ts'],
   bundle: true,
   platform: 'node',
-  target: 'node18',
+  target: 'node20',
   packages: 'external',
   outdir: './dist',
   format: 'cjs',
