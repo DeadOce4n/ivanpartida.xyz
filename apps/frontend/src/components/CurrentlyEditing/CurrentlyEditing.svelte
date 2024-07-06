@@ -7,9 +7,8 @@
   import Sleep from 'icons:svelte/mingcute/sleep-fill';
 
   import Icon from './Icon.svelte';
+  import { reconnectingWebSocket } from './ws';
 
-  let socket: WebSocket;
-  let timer: ReturnType<typeof setInterval> | null;
   let file: {
     filename: string;
     filetype: string;
@@ -18,37 +17,22 @@
     baseDir: string;
   } | null;
 
+  let ws: ReturnType<typeof reconnectingWebSocket> | null = null;
+
   onMount(() => {
-    const connect = () => {
-      if (socket) {
-        socket.close();
-      }
-      console.log(import.meta.env.PUBLIC_WEBSOCKET_URI);
-      socket = new WebSocket(import.meta.env.PUBLIC_WEBSOCKET_URI);
-      socket.onopen = () => {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-        console.log('WS Connected!');
-        file = null;
-      };
-      socket.onclose = () => {
-        if (!timer) {
-          timer = setInterval(connect, 1000);
-        }
-      };
-      socket.onmessage = async (event: MessageEvent<Blob>) => {
-        const data = decode(await event.data.arrayBuffer()) as typeof file;
-        file = data;
-      };
-    };
-    connect();
+    ws = reconnectingWebSocket({
+      uri: import.meta.env.PUBLIC_WEBSOCKET_URI,
+      onMessage: (data) => {
+        file = decode(data) as typeof file;
+      },
+    });
+    ws.connect();
   });
 
   onDestroy(() => {
-    if (socket) {
-      socket.close();
+    if (ws) {
+      ws.disconnect();
+      ws.unsub();
     }
   });
 
